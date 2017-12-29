@@ -295,7 +295,7 @@ public class HAMFrame extends JFrame {
 			lblTriggeredAutomations = new JLabel("Triggered automations:");
 			lblTriggeredAutomations.setFont(new Font("DejaVu Sans Condensed", Font.BOLD, 18));
 			lblTriggeredAutomations.setBackground(Color.ORANGE);
-			lblTriggeredAutomations.setBounds(452, 355, 372, 38);
+			lblTriggeredAutomations.setBounds(35, 338, 372, 38);
 			contentPane.add(lblTriggeredAutomations);
 				}
 			return lblTriggeredAutomations;
@@ -304,7 +304,7 @@ public class HAMFrame extends JFrame {
 				if (triggeredText == null) {
 			triggeredText = new JTextArea();
 			triggeredText.setEditable(false);
-			triggeredText.setBounds(462, 386, 350, 206);
+			triggeredText.setBounds(35, 388, 372, 206);
 			contentPane.add(triggeredText);
 				}
 			return triggeredText;
