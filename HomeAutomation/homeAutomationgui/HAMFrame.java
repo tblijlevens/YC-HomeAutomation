@@ -325,6 +325,16 @@ public class HAMFrame extends JFrame {
 				homeControl.createNewAutomation("Table on >> Couch on", "Table Light", true, "Couch Light", true);
 				homeControl.createNewAutomation("Heating on >> Table on", "Heating", true, "Table Light", true);
 
+/*			for a more complex of chaining automations comment out above automation creations
+				and uncomment below automation creations.
+				Chain: when turning on wifi, triggers a lot of automations,some of them double:
+				homeControl.createNewAutomation("Wifi on >> Heating on", "WiFi", true, "Heating", true);
+				homeControl.createNewAutomation("Wifi on >> Table on", "WiFi", true, "Table Light", true);
+				homeControl.createNewAutomation("Table on >> Couch on", "Table Light", true, "Couch Light", true);
+				homeControl.createNewAutomation("Couch on >> Wifi off", "Couch Light", true, "WiFi", false);
+				homeControl.createNewAutomation("Couch on >> Heating off", "Couch Light", true, "Heating", false);
+				homeControl.createNewAutomation("Heating off >> Wifi on", "Heating", false, "WiFi", true);
+*/
 				// show all automations:
 				String allAutomations = "";
 				for (Automation a : homeControl.getAutomations()){
