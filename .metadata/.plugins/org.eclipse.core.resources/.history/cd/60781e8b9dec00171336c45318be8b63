@@ -303,7 +303,6 @@ public class HAMFrame extends JFrame {
 			private JTextArea getTriggeredText() {
 				if (triggeredText == null) {
 			triggeredText = new JTextArea();
-			triggeredText.setEditable(false);
 			triggeredText.setBounds(35, 388, 372, 206);
 			contentPane.add(triggeredText);
 				}

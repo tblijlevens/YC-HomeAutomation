@@ -107,7 +107,7 @@ public class HAMFrame extends JFrame {
 
 			private JLabel getAutomationsLabel() {
 				if (automationsLabel == null) {
-					automationsLabel = new JLabel("Available automations");
+					automationsLabel = new JLabel("Automations");
 					automationsLabel.setFont(new Font("DejaVu Sans Condensed", Font.BOLD, 18));
 					automationsLabel.setBounds(547, 12, 211, 38);
 					contentPane.add(automationsLabel);
@@ -119,10 +119,10 @@ public class HAMFrame extends JFrame {
 			wifiOnToggle = new JToggleButton("On");
 			wifiOnToggle.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					onToggleAction("WiFi");
+					wifiOnToggleAction();
 				}
 			});
-			wifiOnToggle.setFont(new Font("Dialog", Font.PLAIN, 14));
+			wifiOnToggle.setFont(new Font("Dialog", Font.BOLD, 14));
 			wifiOnToggle.setBounds(204, 62, 73, 25);
 			contentPane.add(wifiOnToggle);
 				}
@@ -131,10 +131,8 @@ public class HAMFrame extends JFrame {
 			private JToggleButton getWifiOffToggle() {
 				if (wifiOffToggle == null) {
 			wifiOffToggle = new JToggleButton("Off");
-			wifiOffToggle.setEnabled(false);
 			wifiOffToggle.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					offToggleAction("WiFi");
 				}
 			});
 			wifiOffToggle.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -169,10 +167,8 @@ public class HAMFrame extends JFrame {
 			private JToggleButton getHeatingOffToggle() {
 				if (heatingOffToggle == null) {
 			heatingOffToggle = new JToggleButton("Off");
-			heatingOffToggle.setEnabled(false);
 			heatingOffToggle.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					offToggleAction("Heating");
 				}
 			});
 			heatingOffToggle.setSelected(true);
@@ -188,10 +184,9 @@ public class HAMFrame extends JFrame {
 			heatingOnToggle = new JToggleButton("On");
 			heatingOnToggle.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					onToggleAction("Heating");
 				}
 			});
-			heatingOnToggle.setFont(new Font("Dialog", Font.PLAIN, 14));
+			heatingOnToggle.setFont(new Font("Dialog", Font.BOLD, 14));
 			heatingOnToggle.setBounds(204, 99, 73, 25);
 			contentPane.add(heatingOnToggle);
 				}
@@ -212,10 +207,8 @@ public class HAMFrame extends JFrame {
 			private JToggleButton getTableOffToggle() {
 				if (tableOffToggle == null) {
 			tableOffToggle = new JToggleButton("Off");
-			tableOffToggle.setEnabled(false);
 			tableOffToggle.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					offToggleAction("Table Light");
 				}
 			});
 			tableOffToggle.setSelected(true);
@@ -230,10 +223,9 @@ public class HAMFrame extends JFrame {
 			tableOnToggle = new JToggleButton("On");
 			tableOnToggle.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					onToggleAction("Table Light");
 				}
 			});
-			tableOnToggle.setFont(new Font("Dialog", Font.PLAIN, 14));
+			tableOnToggle.setFont(new Font("Dialog", Font.BOLD, 14));
 			tableOnToggle.setBounds(204, 137, 73, 25);
 			contentPane.add(tableOnToggle);
 				}
@@ -254,10 +246,8 @@ public class HAMFrame extends JFrame {
 			private JToggleButton getCouchOffToggle() {
 				if (couchOffToggle == null) {
 			couchOffToggle = new JToggleButton("Off");
-			couchOffToggle.setEnabled(false);
 			couchOffToggle.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					offToggleAction("Couch Light");
 				}
 			});
 			couchOffToggle.setSelected(true);
@@ -272,10 +262,9 @@ public class HAMFrame extends JFrame {
 			couchOnToggle = new JToggleButton("On");
 			couchOnToggle.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					onToggleAction("Couch Light");
 				}
 			});
-			couchOnToggle.setFont(new Font("Dialog", Font.PLAIN, 14));
+			couchOnToggle.setFont(new Font("Dialog", Font.BOLD, 14));
 			couchOnToggle.setBounds(204, 174, 73, 25);
 			contentPane.add(couchOnToggle);
 			}
@@ -284,7 +273,6 @@ public class HAMFrame extends JFrame {
 			private JTextArea getAutomationsText() {
 				if (automationsText == null) {
 			automationsText = new JTextArea();
-			automationsText.setEditable(false);
 			automationsText.setBounds(452, 67, 360, 276);
 			contentPane.add(automationsText);
 				}
@@ -303,7 +291,6 @@ public class HAMFrame extends JFrame {
 			private JTextArea getTriggeredText() {
 				if (triggeredText == null) {
 			triggeredText = new JTextArea();
-			triggeredText.setEditable(false);
 			triggeredText.setBounds(35, 388, 372, 206);
 			contentPane.add(triggeredText);
 				}
@@ -320,10 +307,9 @@ public class HAMFrame extends JFrame {
 				homeControl.createNewComponent("Heating");
 				homeControl.createNewComponent("Table Light");
 				homeControl.createNewComponent("Couch Light");
-				homeControl.createNewAutomation("Wifi on >> Heating on", "WiFi", true, "Heating", true);
-				homeControl.createNewAutomation("Wifi off >> Table off", "WiFi", false, "Table Light", false);
+				homeControl.createNewAutomation("Wifi on >> Heating on", "Wifi", true, "Heating", true);
+				homeControl.createNewAutomation("Wifi off >> Table off", "Wifi", false, "Table", false);
 				homeControl.createNewAutomation("Table on >> Couch on", "Table Light", true, "Couch Light", true);
-				homeControl.createNewAutomation("Heating on >> Table on", "Heating", true, "Table Light", true);
 
 				// show all automations:
 				String allAutomations = "";
@@ -336,87 +322,33 @@ public class HAMFrame extends JFrame {
 
 			//Event handler code
 
-			private void updateAll(String triggeredAutomations){
+			private void updateAll(String compname){
 				// the list with triggeredAutomations should be cleared and updated
 				// all toggles should correspond to the new statuses of all components
 
-				/*
-				loop through all components. search by their names and check their statuses.
-				Update all toggles accordingly plus set background colors for extra clearer user feedback.
-				*/
 				for (Component c : homeControl.getComponents()){
-						if ("WiFi".equals(c.getName()) && c.getStatus()){
+						if (compname.equals(c.getName()) && compname.equals("WiFi") && c.getStatus()){
 							wifiOnToggle.setSelected(true);
-							wifiOnToggle.setEnabled(false);
 							wifiOffToggle.setSelected(false);
-							wifiOffToggle.setEnabled(true);
-							wifiText.setBackground(Color.GREEN);
-
 						}
-						else if ("WiFi".equals(c.getName()) && !c.getStatus()){
+						else if (compname.equals(c.getName()) && compname.equals("WiFi") && !c.getStatus()){
 							wifiOnToggle.setSelected(false);
-							wifiOnToggle.setEnabled(true);
 							wifiOffToggle.setSelected(true);
-							wifiOffToggle.setEnabled(false);
-							wifiText.setBackground(Color.WHITE);
-
 						}
-						else if ("Heating".equals(c.getName()) && c.getStatus()){
+						else if (compname.equals(c.getName()) && compname.equals("Heating")){
 							heatingOnToggle.setSelected(true);
-							heatingOnToggle.setEnabled(false);
 							heatingOffToggle.setSelected(false);
-							heatingOffToggle.setEnabled(true);
-							heatingText.setBackground(Color.GREEN);
 						}
-						else if ("Heating".equals(c.getName()) && !c.getStatus()){
-							heatingOnToggle.setSelected(false);
-							heatingOnToggle.setEnabled(true);
-							heatingOffToggle.setSelected(true);
-							heatingOffToggle.setEnabled(false);
-							heatingText.setBackground(Color.WHITE);
-						}
-						else if ("Table Light".equals(c.getName()) && c.getStatus()){
-							tableOnToggle.setSelected(true);
-							tableOnToggle.setEnabled(false);
-							tableOffToggle.setSelected(false);
-							tableOffToggle.setEnabled(true);
-							tableText.setBackground(Color.GREEN);
-						}
-						else if ("Table Light".equals(c.getName()) && !c.getStatus()){
-							tableOnToggle.setSelected(false);
-							tableOnToggle.setEnabled(true);
-							tableOffToggle.setSelected(true);
-							tableOffToggle.setEnabled(false);
-							tableText.setBackground(Color.WHITE);
-						}
-						else if ("Couch Light".equals(c.getName()) && c.getStatus()){
-							couchOnToggle.setSelected(true);
-							couchOnToggle.setEnabled(false);
-							couchOffToggle.setSelected(false);
-							couchOffToggle.setEnabled(true);
-							couchText.setBackground(Color.GREEN);
-						}
-						else if ("Couch Light".equals(c.getName()) && !c.getStatus()){
-							couchOnToggle.setSelected(false);
-							couchOnToggle.setEnabled(true);
-							couchOffToggle.setSelected(true);
-							couchOffToggle.setEnabled(false);
-							couchText.setBackground(Color.WHITE);
-						}
+							//more else ifs for each component
 				}
 
-				triggeredText.setText(triggeredAutomations);
+			}
+			private void wifiOnToggleAction(){
+				// changeStatus of wifi
+				homeControl.changeStatus("WiFi", true);
 
-			}
-			private void onToggleAction(String name){
-				// changeStatus of component with this "name"
-				String allTriggered = homeControl.changeStatus(name, true);
-				updateAll(allTriggered);
-			}
-			private void offToggleAction(String name){
-				// changeStatus of component with this "name"
-				String allTriggered = homeControl.changeStatus(name, false);
-				updateAll(allTriggered);
+				updateAll("WiFi");
+
 			}
 
 }

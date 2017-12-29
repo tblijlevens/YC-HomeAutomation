@@ -133,9 +133,10 @@ public class HAManager {
 	 * chain triggered automations).
 	 */
 	public String changeStatus(String name, boolean stat){
-		String triggeredAutomations = "";
+		String triggeredAutomations = "Triggered:";
 		ArrayList<String> allChainedAutos = new ArrayList<>();
 		ArrayList<String> chainedAutos = new ArrayList<>();
+		System.out.println(name + " " + status + " is what must happen");
 
 		for (Component c : components){
 			if (c.getName()==name && c.getStatus() != stat){ //if current status is not "stat"

@@ -284,7 +284,6 @@ public class HAMFrame extends JFrame {
 			private JTextArea getAutomationsText() {
 				if (automationsText == null) {
 			automationsText = new JTextArea();
-			automationsText.setEditable(false);
 			automationsText.setBounds(452, 67, 360, 276);
 			contentPane.add(automationsText);
 				}
@@ -303,7 +302,6 @@ public class HAMFrame extends JFrame {
 			private JTextArea getTriggeredText() {
 				if (triggeredText == null) {
 			triggeredText = new JTextArea();
-			triggeredText.setEditable(false);
 			triggeredText.setBounds(35, 388, 372, 206);
 			contentPane.add(triggeredText);
 				}

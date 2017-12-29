@@ -70,7 +70,7 @@ public class Automation {
    * @param automations the given list of automations in which this method should
    * look for other automations to trigger
    * @return a list of names of the triggered automations. If this automation
-   * triggers other automations, they in turn will return a list of names to 
+   * triggers other automations, they in turn will return a list of names to
    * this Automation instance, which will add them to its own return list of names.
    * The first triggered automation (called on by the HAManager) will therefore always
    * return all the names of all the triggered automations, including all
@@ -80,7 +80,7 @@ public class Automation {
     ArrayList<String> allChainedAutos = new ArrayList<>();
     if (responseStatus != responseComp.getStatus()){ //only triggers if status changes
       responseComp.changeStatus(responseStatus);
-
+      
       ArrayList<String> chainedAutos = new ArrayList<>();
       allChainedAutos.add(this.name);
 
