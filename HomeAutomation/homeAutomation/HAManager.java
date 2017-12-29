@@ -78,6 +78,7 @@ public class HAManager {
 	 */
 	public boolean createNewAutomation(String autoName, String triggerCompName, boolean triggerStatus, String responseCompName, boolean responseStatus){
 		boolean exists = false;
+
 		for (Automation a : automations){ //see if automation does not already exist
 			if (a.getName().equals(autoName)){
 				exists = true;
@@ -87,20 +88,21 @@ public class HAManager {
 			Component triggerComp = null;
 			Component responseComp = null;
 			for (Component c : components){	// find right components
-				if (c.getName()==triggerCompName){
+				if (c.getName().equals(triggerCompName)){
 					triggerComp = c;
 				}
-				if (c.getName()==responseCompName){
+				else if (c.getName().equals(responseCompName)){
 					responseComp = c;
 				}
 			}
-			Automation newAutomation = new Automation(autoName, triggerComp, triggerStatus, responseComp, responseStatus); // create new automation
-			automations.add(newAutomation);
-			return true; //returns succes feedback
+			if (triggerComp!=null && responseComp !=null){
+				Automation newAutomation = new Automation(autoName, triggerComp, triggerStatus, responseComp, responseStatus); // create new automation
+				automations.add(newAutomation);
+				return true; //returns succes feedback
+			}
 		}
-		else {
 			return false; // returns fail feedback
-		}
+
 	}
 
 	/**
@@ -136,12 +138,12 @@ public class HAManager {
 		String triggeredAutomations = "";
 		ArrayList<String> allChainedAutos = new ArrayList<>();
 		ArrayList<String> chainedAutos = new ArrayList<>();
-
 		for (Component c : components){
 			if (c.getName()==name && c.getStatus() != stat){ //if current status is not "stat"
 				c.changeStatus(stat); //change status
 				for (Automation a : automations){ //loop through automations
 					if (a.getTriggerComp() == c && a.getTriggerStatus() == stat){ // find triggered automations: component and status are triggers in an automation
+
 						chainedAutos = a.triggerAutomation(automations); // trigger that automation. first triggered automation now contains all names of all chained automations and returns it to this HAManager instance
 						for (String s : chainedAutos){ //loop through chained automations
 							// add line to only add unique strings...

@@ -1,0 +1,38 @@
+package homeAutomationgui;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+class CreateAutoDialog extends JPanel {
+   private JTextField field = new JTextField(10);
+   private JButton okButton = new JButton("OK");
+
+   public CreateAutoDialog() {
+
+      add(field);
+      okButton.addActionListener(new ActionListener() {
+      	public void actionPerformed(ActionEvent arg0) {
+            okButtonAction();
+      	}
+      });
+      add(okButton);
+   }
+
+   // to allow outside classes to get the text held by the JTextField
+   public String getFieldText() {
+      return field.getText();
+   }
+
+   // This button's action is simply to dispose of the JDialog.
+   private void okButtonAction() {
+      // win is here the JDialog that holds this JPanel, but it could be a JFrame or
+      // any other top-level container that is holding this JPanel
+      Window win = SwingUtilities.getWindowAncestor(this);
+      if (win != null) {
+         win.dispose();
+      }
+   }
+}

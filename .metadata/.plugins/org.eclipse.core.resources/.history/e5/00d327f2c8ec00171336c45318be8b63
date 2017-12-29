@@ -1,0 +1,132 @@
+package homeAutomationgui;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import homeAutomation.Component;
+import homeAutomation.HAManager;
+
+import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.JComboBox;
+import javax.swing.JRadioButton;
+
+public class CreateAutoDialog2 extends JDialog {
+
+	private HAManager homeControl;
+	private final JPanel contentPanel = new JPanel();
+	private JComboBox tCompComboBox;
+
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			CreateAutoDialog2 dialog = new CreateAutoDialog2();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public CreateAutoDialog2() {
+		initialize();
+		myInit();
+	}
+	public CreateAutoDialog2(HAManager homeControl) {
+		this.homeControl = homeControl;
+		initialize();
+		myInit();
+	}
+
+	private void initialize() {
+		setBounds(100, 100, 850, 650);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
+		contentPanel.add(getTCompComboBox());
+
+		JLabel lblWhen = new JLabel("When");
+		lblWhen.setBounds(52, 56, 70, 15);
+		contentPanel.add(lblWhen);
+
+		JLabel lblTurns = new JLabel("turns");
+		lblTurns.setBounds(282, 56, 70, 15);
+		contentPanel.add(lblTurns);
+
+		JLabel lblShould = new JLabel("should turn");
+		lblShould.setBounds(282, 100, 125, 15);
+		contentPanel.add(lblShould);
+
+		JLabel lblThen_1 = new JLabel("then");
+		lblThen_1.setBounds(52, 100, 70, 15);
+		contentPanel.add(lblThen_1);
+		
+		JComboBox rCompComboBox = new JComboBox();
+		rCompComboBox.setBounds(107, 95, 144, 20);
+		contentPanel.add(rCompComboBox);
+
+
+		{
+			JPanel buttonPane = new JPanel();
+			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+			getContentPane().add(buttonPane, BorderLayout.SOUTH);
+			{
+				JButton okButton = new JButton("OK");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						okButtonAction();
+					}
+				});
+				okButton.setActionCommand("OK");
+				buttonPane.add(okButton);
+				getRootPane().setDefaultButton(okButton);
+			}
+			{
+				JButton cancelButton = new JButton("Cancel");
+				cancelButton.setActionCommand("Cancel");
+				buttonPane.add(cancelButton);
+			}
+		}
+	}
+
+	private JComboBox getTCompComboBox(){
+		if (tCompComboBox == null){
+			tCompComboBox = new JComboBox();
+			tCompComboBox.setBounds(107, 51, 144, 20);
+			contentPanel.add(tCompComboBox);
+		}
+		return tCompComboBox;
+	}
+
+	//////////////////////////////
+	///////// OWN CODE ///////////
+	//////////////////////////////
+
+	private void myInit(){
+		for (Component c : homeControl.getComponents()){
+			tCompComboBox.addItem(c.getName());
+		}
+	}
+
+	private void okButtonAction(){
+		homeControl.createNewAutomation("Couch off >> Wifi off", "Couch Light", false, "WiFi", false);
+		//hamFrame.triggeredText.setText(hamFrame.getAllAutomations());
+		System.out.println(homeControl.getAutomations().size());
+		new HAMFrame(homeControl).setVisible(true);
+		CreateAutoDialog2.this.dispose();
+	}
+}

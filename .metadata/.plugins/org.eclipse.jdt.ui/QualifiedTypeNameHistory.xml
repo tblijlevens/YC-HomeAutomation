@@ -3,7 +3,15 @@
 <fullyQualifiedTypeName name="homeAutomation.HAManager.Status"/>
 <fullyQualifiedTypeName name="java.awt.Component"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="homeAutomation.HAManager"/>
+<fullyQualifiedTypeName name="javax.swing.BorderFactory"/>
+<fullyQualifiedTypeName name="javax.swing.JPanel"/>
+<fullyQualifiedTypeName name="javax.swing.JTextField"/>
+<fullyQualifiedTypeName name="javax.swing.JButton"/>
+<fullyQualifiedTypeName name="javax.swing.JDialog"/>
+<fullyQualifiedTypeName name="java.awt.Window"/>
+<fullyQualifiedTypeName name="javax.swing.SwingUtilities"/>
+<fullyQualifiedTypeName name="java.awt.Dialog.ModalityType"/>
 <fullyQualifiedTypeName name="homeAutomation.Automation"/>
+<fullyQualifiedTypeName name="homeAutomation.HAManager"/>
 <fullyQualifiedTypeName name="homeAutomation.Component"/>
 </qualifiedTypeNameHistroy>

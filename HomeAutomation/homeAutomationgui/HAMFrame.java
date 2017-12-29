@@ -13,19 +13,25 @@ import homeAutomation.HAManager;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Window;
+
 import javax.swing.JToggleButton;
+import javax.swing.SwingUtilities;
 import javax.swing.JSlider;
 import java.awt.Color;
+import java.awt.Dialog.ModalityType;
+
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 
 public class HAMFrame extends JFrame {
 
-	private HAManager homeControl = new HAManager();
+	private HAManager homeControl;
 	private JPanel contentPane;
 	private JLabel componentsLabel;
 	private JLabel automationsLabel;
@@ -43,7 +49,7 @@ public class HAMFrame extends JFrame {
 	private JToggleButton couchOnToggle;
 	private JTextArea automationsText;
 	private JLabel lblTriggeredAutomations;
-	private JTextArea triggeredText;
+	public JTextArea triggeredText;
 	private JButton createAutoButton;
 
 
@@ -67,6 +73,12 @@ public class HAMFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public HAMFrame() {
+		homeControl = new HAManager();
+		initialize();
+		myInit();
+	}
+	public HAMFrame(HAManager homeControl) {
+		this.homeControl = homeControl;
 		initialize();
 		myInit();
 	}
@@ -96,6 +108,15 @@ public class HAMFrame extends JFrame {
 		contentPane.add(getLblTriggeredAutomations());
 		contentPane.add(getTriggeredText());
 		contentPane.add(getCreateAutoButton());
+
+		JButton btnTestbutton = new JButton("Testbutton");
+		btnTestbutton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				testButtonAction();
+			}
+		});
+		btnTestbutton.setBounds(143, 320, 117, 25);
+		contentPane.add(btnTestbutton);
 	}
 
 			private JLabel getComponentsLabel() {
@@ -303,6 +324,7 @@ public class HAMFrame extends JFrame {
 					createAutoButton = new JButton("+ Create new automation");
 					createAutoButton.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent arg0) {
+							createAutoButtonAction();
 						}
 					});
 					createAutoButton.setBounds(452, 257, 360, 38);
@@ -344,11 +366,11 @@ public class HAMFrame extends JFrame {
 				homeControl.createNewComponent("Heating");
 				homeControl.createNewComponent("Table Light");
 				homeControl.createNewComponent("Couch Light");
-				homeControl.createNewAutomation("Wifi on >> Heating on", "WiFi", true, "Heating", true);
+				homeControl.createNewAutomation("Wifi on >> Heating on", "WiFi", true, "Heating", true);/*
 				homeControl.createNewAutomation("Wifi off >> Table off", "WiFi", false, "Table Light", false);
 				homeControl.createNewAutomation("Table on >> Couch on", "Table Light", true, "Couch Light", true);
 				homeControl.createNewAutomation("Heating on >> Table on", "Heating", true, "Table Light", true);
-
+*/
 /*			for a more complex of chaining automations comment out above automation creations
 				and uncomment below automation creations.
 				Chain: when turning on wifi, triggers a lot of automations,some of them double:
@@ -360,11 +382,8 @@ public class HAMFrame extends JFrame {
 				homeControl.createNewAutomation("Heating off >> Wifi on", "Heating", false, "WiFi", true);
 */
 				// show all automations:
-				String allAutomations = "";
-				for (Automation a : homeControl.getAutomations()){
-					allAutomations += a.getName() + "\n";
-				}
-				automationsText.setText(allAutomations);
+
+				automationsText.setText(getAllAutomations());
 			}
 
 
@@ -438,9 +457,14 @@ public class HAMFrame extends JFrame {
 							couchText.setBackground(Color.WHITE);
 						}
 				}
-
 				triggeredText.setText(triggeredAutomations);
-
+			}
+			private String getAllAutomations(){
+				String allAutomations = "";
+				for (Automation a : homeControl.getAutomations()){
+					allAutomations += a.getName() + "\n";
+				}
+				return allAutomations;
 			}
 			private void onToggleAction(String name){
 				// changeStatus of component with this "name"
@@ -453,7 +477,19 @@ public class HAMFrame extends JFrame {
 				updateAll(allTriggered);
 			}
 			private void createAutoButtonAction(){
-			    new CreateAutoFrame().setVisible(true);
-			    // HAMFrame.this.dispose(); // if you want the first frame to close
+			    new CreateAutoDialog2(homeControl).setVisible(true);
+			   	HAMFrame.this.dispose();
 			}
+			private void testButtonAction(){
+				for (Automation a : homeControl.getAutomations()){
+					System.out.println(a.getName());
+					System.out.println("t: " + a.getTriggerComp().getName());
+					System.out.println("r: " + a.getRespComp().getName());
+				}
+				System.out.println();
+				for (Component c : homeControl.getComponents()){
+					System.out.println(c.getName() + ": " + c.getStatus());
+				}
+			}
+
 }

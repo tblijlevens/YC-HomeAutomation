@@ -1,0 +1,73 @@
+package homeAutomationgui;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import homeAutomation.Component;
+
+import javax.swing.JComboBox;
+
+public class CreateAutoFrame extends JFrame {
+
+	private JPanel contentPane;
+	private JComboBox tCompComboBox;
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					CreateAutoFrame frame = new CreateAutoFrame();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public CreateAutoFrame() {
+		initialize();
+		myInit();
+	}
+
+	private void initialize(){
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 750, 550);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		contentPane.add(getTCompComboBox());
+	}
+
+
+	private JComboBox getTCompComboBox(){
+		if (tCompComboBox == null){
+			tCompComboBox = new JComboBox();
+			tCompComboBox.setBounds(139, 89, 198, 24);
+			contentPane.add(tCompComboBox);
+		}
+		return tCompComboBox;
+	}
+
+
+//////////////////////////////
+///////// OWN CODE ///////////
+//////////////////////////////
+	/*
+		private void myInit(){
+			for (Component c : homeControl.getComponents()){
+				tCompComboBox.addItem(c.getName());
+			}
+		}
+*/
+}
