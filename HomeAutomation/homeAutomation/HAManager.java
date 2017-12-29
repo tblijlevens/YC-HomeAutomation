@@ -155,7 +155,7 @@ public class HAManager {
 		}
 
 		for (String s : allChainedAutos){
-			triggeredAutomations += "\n" + s;
+			triggeredAutomations += s +"\n";
 		}
 		return triggeredAutomations;
 	} // endmethod changeStatus

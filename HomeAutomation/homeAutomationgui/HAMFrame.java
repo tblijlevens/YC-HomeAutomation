@@ -366,11 +366,11 @@ public class HAMFrame extends JFrame {
 				homeControl.createNewComponent("Heating");
 				homeControl.createNewComponent("Table Light");
 				homeControl.createNewComponent("Couch Light");
-				homeControl.createNewAutomation("Wifi on >> Heating on", "WiFi", true, "Heating", true);/*
-				homeControl.createNewAutomation("Wifi off >> Table off", "WiFi", false, "Table Light", false);
+				homeControl.createNewAutomation("Wifi on >> Heating on", "WiFi", true, "Heating", true);
+//				homeControl.createNewAutomation("Wifi off >> Table off", "WiFi", false, "Table Light", false);
 				homeControl.createNewAutomation("Table on >> Couch on", "Table Light", true, "Couch Light", true);
-				homeControl.createNewAutomation("Heating on >> Table on", "Heating", true, "Table Light", true);
-*/
+//				homeControl.createNewAutomation("Heating on >> Table on", "Heating", true, "Table Light", true);
+
 /*			for a more complex of chaining automations comment out above automation creations
 				and uncomment below automation creations.
 				Chain: when turning on wifi, triggers a lot of automations,some of them double:
@@ -384,6 +384,7 @@ public class HAMFrame extends JFrame {
 				// show all automations:
 
 				automationsText.setText(getAllAutomations());
+				updateAll("");
 			}
 
 
