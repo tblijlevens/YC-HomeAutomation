@@ -1,0 +1,45 @@
+package homeAutomation;
+
+import java.util.ArrayList;
+
+public class Component {
+
+  //  ATRIBUTES
+  private String name = "";
+  private boolean Status = false;
+  private ArrayList<Component> falseTriggers = new ArrayList<>();
+  private ArrayList<Component> trueTriggers = new ArrayList<>();
+
+  // CONSTRUCTOR
+  public Component(String name){
+    this.name = name;
+  }
+
+
+  // METHODS
+  public String getName(){
+    return name;
+  }
+  public boolean getStatus(){
+    return Status;
+  }
+
+  public String changeStatus(boolean status, ArrayList<Automation> automations){
+    this.Status = status;
+    Automation triggeredAutomation = null;
+    for (Automation a: automations){ //search automations if this component and just changed status are the same as triggers
+      if (a.getTriggerComp() == this && a.getTriggerStatus() == status){
+        triggeredAutomation = a;
+        a.triggerAutomation(automations); // set new responseStatus to responseComp of that automation
+      }
+    } //end second forloop
+    if (triggerAutomation!= null){
+      return triggeredAutomation.getName();
+    }
+    else {
+      return "";
+    }
+  }
+
+
+}

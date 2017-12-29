@@ -1,0 +1,24 @@
+package test;
+
+import homeAutomation.Automation;
+import homeAutomation.Component;
+
+public class TestAutomation {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Component wifi = new Component("wifi");
+		Component kitchenLight = new Component("Kitchen Light");
+		System.out.println(wifi.getName() + " is " + wifi.getStatus());
+		System.out.println(kitchenLight.getName() + " is " + wifi.getStatus());
+
+		Automation wifiOn_kitchenLightOn = new Automation("Wifi on > Kitschen Light on", wifi, true, kitchenLight, true);
+		Automation wifiOff_kitchenLightOff = new Automation("Wifi off > Kitschen Light off", wifi, false, kitchenLight, false);
+		System.out.println(wifiOn_kitchenLightOn.getName() + " has 2 components " + wifiOn_kitchenLightOn.getTriggerComp() + " & " wifiOn_kitchenLightOn.getRespComp() + " and with respectively trigger and response statusses: " + wifiOn_kitchenLightOn.getTriggerStatus() " & " + wifiOn_kitchenLightOn.getRespStatus());
+		
+
+
+	}
+
+}

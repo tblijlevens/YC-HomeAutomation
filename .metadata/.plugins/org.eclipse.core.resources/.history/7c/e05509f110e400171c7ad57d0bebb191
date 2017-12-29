@@ -1,0 +1,17 @@
+package homeAutomation;
+
+public class component {
+
+  //  ATRIBUTES
+
+  public enum Status {ON, OFF}
+
+  // METHODS
+  public Status getStatus(){
+    return Status;
+  }
+
+  public void changeStatus(Status status){
+    this.Status = status;
+  }
+}

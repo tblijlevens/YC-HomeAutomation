@@ -1,0 +1,58 @@
+package homeAutomationgui;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JToggleButton;
+
+public class HAMFrame extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					HAMFrame frame = new HAMFrame();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public HAMFrame() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 850, 650);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel componentsLabel = new JLabel("Components");
+		componentsLabel.setFont(new Font("DejaVu Sans Condensed", Font.BOLD, 18));
+		componentsLabel.setBounds(49, 12, 211, 38);
+		contentPane.add(componentsLabel);
+		
+		JLabel automationsLabel = new JLabel("Automations");
+		automationsLabel.setFont(new Font("DejaVu Sans Condensed", Font.BOLD, 18));
+		automationsLabel.setBounds(547, 12, 211, 38);
+		contentPane.add(automationsLabel);
+		
+		JToggleButton toggleButton = new JToggleButton("");
+		toggleButton.setBounds(80, 62, 167, 25);
+		contentPane.add(toggleButton);
+	}
+}

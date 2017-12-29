@@ -1,0 +1,23 @@
+package test;
+
+import homeAutomation.Component;
+
+public class TestHAManager {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		HAManager theManager = new HAManager();
+
+		Component wifi = new Component("wifi");
+		Component kitchenLight = new Component("Kitchen Light");
+
+		System.out.println("Currently there are " + automations.size() + " automations.");
+
+		createNewAutomation("Wifi on > Kitchen Light on", wifi, true, kitchenLight, true);
+
+		System.out.println("Currently there are " + automations.size() + " automations.");
+
+	}
+
+}

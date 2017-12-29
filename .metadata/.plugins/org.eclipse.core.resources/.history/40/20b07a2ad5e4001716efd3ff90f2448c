@@ -1,0 +1,30 @@
+package homeAutomation;
+
+public class HAManager {
+
+	//  ATRIBUTES
+	ArrayList<Component> componenten;
+	ArrayList<Automation> automations;
+
+	// CONSTRUCTOR
+	public HAManager(){
+	}
+
+	// METHODS
+	public ArrayList<Component> getComponenten(){
+		return componenten;
+	}
+	public ArrayList<Automation> getAutomations(){
+		return automations;
+	}
+
+	public void createNewAutomation(String name, Component triggerComp, boolean triggerStatus, Component responseComp, boolean responseStatus){
+		Automation newAutomation = new Automation(String name, Component triggerComp, boolean triggerStatus, Component responseComp, boolean responseStatus)
+		automations.add(newAutomation);
+	}
+	public void createNewAutomation(String name, String description, Component triggerComp, boolean triggerStatus, Component responseComp, boolean responseStatus){
+		Automation newAutomation = new Automation(String name, String description, Component triggerComp, boolean triggerStatus, Component responseComp, boolean responseStatus)
+		automations.add(newAutomation);
+	}
+
+}

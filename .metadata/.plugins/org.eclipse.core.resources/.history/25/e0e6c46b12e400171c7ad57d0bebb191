@@ -1,0 +1,9 @@
+package homeAutomation;
+
+public class HAManager {
+	
+	public enum Status {ON, OFF}
+
+
+
+}

@@ -1,0 +1,152 @@
+package homeAutomationgui;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JToggleButton;
+import javax.swing.JSlider;
+import java.awt.Color;
+import javax.swing.JTextArea;
+
+public class HAMFrame extends JFrame {
+
+	private HAManager homeControl = new HAManager();
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					HAMFrame frame = new HAMFrame();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public HAMFrame() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 850, 650);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+
+		JLabel componentsLabel = new JLabel("Components");
+		componentsLabel.setBackground(Color.ORANGE);
+		componentsLabel.setFont(new Font("DejaVu Sans Condensed", Font.BOLD, 18));
+		componentsLabel.setBounds(49, 12, 211, 38);
+		contentPane.add(componentsLabel);
+
+		JLabel automationsLabel = new JLabel("Automations");
+		automationsLabel.setFont(new Font("DejaVu Sans Condensed", Font.BOLD, 18));
+		automationsLabel.setBounds(547, 12, 211, 38);
+		contentPane.add(automationsLabel);
+
+		JToggleButton wifiOnToggle = new JToggleButton("On");
+		wifiOnToggle.setFont(new Font("Dialog", Font.BOLD, 14));
+		wifiOnToggle.setBounds(204, 62, 73, 25);
+		contentPane.add(wifiOnToggle);
+
+		JToggleButton wifiOffToggle = new JToggleButton("Off");
+		wifiOffToggle.setFont(new Font("Dialog", Font.PLAIN, 12));
+		wifiOffToggle.setSelected(true);
+		wifiOffToggle.setBounds(136, 62, 73, 25);
+		contentPane.add(wifiOffToggle);
+
+		JTextArea wifiText = new JTextArea();
+		wifiText.setEditable(false);
+		wifiText.setFont(new Font("Dialog", Font.PLAIN, 16));
+		wifiText.setText("WiFi");
+		wifiText.setBounds(35, 62, 90, 25);
+		contentPane.add(wifiText);
+
+		JTextArea heatingText = new JTextArea();
+		heatingText.setText("Heating");
+		heatingText.setFont(new Font("Dialog", Font.PLAIN, 16));
+		heatingText.setEditable(false);
+		heatingText.setBounds(35, 99, 90, 25);
+		contentPane.add(heatingText);
+
+		JToggleButton heatingOffToggle = new JToggleButton("Off");
+		heatingOffToggle.setSelected(true);
+		heatingOffToggle.setFont(new Font("Dialog", Font.PLAIN, 12));
+		heatingOffToggle.setBounds(136, 99, 73, 25);
+		contentPane.add(heatingOffToggle);
+
+		JToggleButton heatingOnToggle = new JToggleButton("On");
+		heatingOnToggle.setFont(new Font("Dialog", Font.BOLD, 14));
+		heatingOnToggle.setBounds(204, 99, 73, 25);
+		contentPane.add(heatingOnToggle);
+
+		JTextArea tableText = new JTextArea();
+		tableText.setText("Table light");
+		tableText.setFont(new Font("Dialog", Font.PLAIN, 16));
+		tableText.setEditable(false);
+		tableText.setBounds(35, 137, 90, 25);
+		contentPane.add(tableText);
+
+		JToggleButton tableOffToggle = new JToggleButton("Off");
+		tableOffToggle.setSelected(true);
+		tableOffToggle.setFont(new Font("Dialog", Font.PLAIN, 12));
+		tableOffToggle.setBounds(136, 137, 73, 25);
+		contentPane.add(tableOffToggle);
+
+		JToggleButton tableOnToggle = new JToggleButton("On");
+		tableOnToggle.setFont(new Font("Dialog", Font.BOLD, 14));
+		tableOnToggle.setBounds(204, 137, 73, 25);
+		contentPane.add(tableOnToggle);
+
+		JTextArea couchText = new JTextArea();
+		couchText.setText("Couch light");
+		couchText.setFont(new Font("Dialog", Font.PLAIN, 16));
+		couchText.setEditable(false);
+		couchText.setBounds(35, 174, 90, 25);
+		contentPane.add(couchText);
+
+		JToggleButton couchOffToggle = new JToggleButton("Off");
+		couchOffToggle.setSelected(true);
+		couchOffToggle.setFont(new Font("Dialog", Font.PLAIN, 12));
+		couchOffToggle.setBounds(136, 174, 73, 25);
+		contentPane.add(couchOffToggle);
+
+		JToggleButton couchOnToggle = new JToggleButton("On");
+		couchOnToggle.setFont(new Font("Dialog", Font.BOLD, 14));
+		couchOnToggle.setBounds(204, 174, 73, 25);
+		contentPane.add(couchOnToggle);
+
+		JTextArea automationsText = new JTextArea();
+		automationsTaxt.setBounds(452, 67, 360, 276);
+		contentPane.add(automationsTaxt);
+
+		JLabel lblTriggeredAutomations = new JLabel("Triggered automations:");
+		lblTriggeredAutomations.setFont(new Font("DejaVu Sans Condensed", Font.BOLD, 18));
+		lblTriggeredAutomations.setBackground(Color.ORANGE);
+		lblTriggeredAutomations.setBounds(49, 338, 253, 38);
+		contentPane.add(lblTriggeredAutomations);
+
+		JTextArea triggeredText = new JTextArea();
+		triggeredText.setBounds(35, 388, 372, 206);
+		contentPane.add(triggeredText);
+
+		//////////////////////////////
+		///////// OWN CODE ///////////
+		//////////////////////////////
+
+		
+
+	}
+}

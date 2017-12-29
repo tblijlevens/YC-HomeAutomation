@@ -1,0 +1,48 @@
+package homeAutomation;
+
+import java.util.ArrayList;
+
+public class HAManager {
+
+	//  ATRIBUTES
+	ArrayList<Component> components = new ArrayList<>();
+	ArrayList<Automation> automations = new ArrayList<>();
+
+	// CONSTRUCTOR
+	public HAManager(){
+	}
+
+	// METHODS
+	public ArrayList<Component> getComponents(){
+		return components;
+	}
+	public ArrayList<Automation> getAutomations(){
+		return automations;
+	}
+
+	/**
+	 * Creates a new automation, linking two components.
+	 * When a status change of a component is defined as a trigger in an automation
+	 * the status of the response Component will be changed to <code>responseStatus</code>
+	 * @param name the name of the automation
+	 * @param triggerComp the Component which triggers the automation
+	 * @param triggerStatus the prerequisite status of <code>triggerComp</code> to trigger the automation
+	 * @param responseComp the Component which responses to the trigger
+	 * @param responseStatus the wanted status of <code>responseComp</code>
+	 */
+	public void createNewAutomation(String name, Component triggerComp, boolean triggerStatus, Component responseComp, boolean responseStatus){
+		Automation newAutomation = new Automation(name, triggerComp, triggerStatus, responseComp, responseStatus);
+		automations.add(newAutomation);
+	}
+
+	public void createNewComponent(String name){
+		Component newComponent = new Component(name);
+		componenten.add(newComponent);
+	}
+
+	public void changeStatus(Component comp, boolean stat){
+		ArrayList<components
+	}
+
+
+}

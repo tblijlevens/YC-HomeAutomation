@@ -1,0 +1,178 @@
+package test;
+
+import java.util.ArrayList;
+
+import homeAutomation.Automation;
+import homeAutomation.Component;
+import homeAutomation.HAManager;
+
+public class TestHAManager {
+
+	public static void main(String[] args) {
+		HAManager theManager = new HAManager(); //make new manager
+		ArrayList<Component> allComponents = theManager.getComponents();
+		ArrayList<Automation> allAutomations = theManager.getAutomations();
+
+		System.out.println("expect 0 of everything");
+		System.out.println(textComps(allComponents));
+		System.out.println(textAuts(allAutomations));
+
+		//create two components
+		System.out.println();
+		System.out.println("2 comps are made.");
+		theManager.createNewComponent("wifi");
+		theManager.createNewComponent("Kitchen Light");
+		allComponents = theManager.getComponents();
+		allAutomations = theManager.getAutomations();
+		System.out.println(textComps(allComponents));
+		System.out.println(textAuts(allAutomations));
+
+		//create two more components, 1 existing
+		System.out.println();
+		System.out.println("2 comps are made, one already exists.");
+		theManager.createNewComponent("wifi");
+		theManager.createNewComponent("Table Light");
+		allComponents = theManager.getComponents();
+		allAutomations = theManager.getAutomations();
+		System.out.println(textComps(allComponents));
+		System.out.println(textAuts(allAutomations));
+
+		//create an automation
+		System.out.println();
+		System.out.println("1 aut is made.");
+		theManager.createNewAutomation("Wifi on > Kitchen Light on", allComponents.get(0), true, allComponents.get(1), true);
+		allComponents = theManager.getComponents();
+		allAutomations = theManager.getAutomations();
+		System.out.println(textComps(allComponents));
+		System.out.println(textAuts(allAutomations));
+
+		// switch wifi on
+		System.out.println();
+		System.out.println("switching wifi on (expect kitchen light to also turn on)");
+		System.out.println(theManager.changeStatus("wifi", true));
+		System.out.println(textComps(allComponents));
+		System.out.println(textAuts(allAutomations));
+
+		//create another automation
+		System.out.println();
+		System.out.println("1 aut is made.");
+		theManager.createNewAutomation("Wifi off > Kitchen Light off", allComponents.get(0), false, allComponents.get(1), false);
+		allComponents = theManager.getComponents();
+		allAutomations = theManager.getAutomations();
+		System.out.println(textComps(allComponents));
+		System.out.println(textAuts(allAutomations));
+
+		// switch wifi off
+		System.out.println();
+		System.out.println("switching wifi off (expect kitchen light to also turn off)");
+		System.out.println(theManager.changeStatus("wifi", false));
+		System.out.println(textComps(allComponents));
+		System.out.println(textAuts(allAutomations));
+
+		// switch light on and wifi off again
+		System.out.println();
+		System.out.println("switching light on and wifi off again (expect kitchen light to stay on)");
+		System.out.println(theManager.changeStatus("Kitchen Light", true));
+		System.out.println(theManager.changeStatus("wifi", false));
+		System.out.println(textComps(allComponents));
+		System.out.println(textAuts(allAutomations));
+
+		//create an automation
+		System.out.println();
+		System.out.println("2 aut is made. one already exists");
+		theManager.createNewAutomation("Wifi on > Table Light on", allComponents.get(0), true, allComponents.get(2), true);
+		theManager.createNewAutomation("Wifi on > Kitchen Light on", allComponents.get(0), true, allComponents.get(1), true);
+		allComponents = theManager.getComponents();
+		allAutomations = theManager.getAutomations();
+		System.out.println(textComps(allComponents));
+		System.out.println(textAuts(allAutomations));
+
+		// switch wifi off
+		System.out.println();
+		System.out.println("switching wifi off (expect kitchen light to stay on)");
+		System.out.println(theManager.changeStatus("wifi", false));
+		System.out.println(textComps(allComponents));
+		System.out.println(textAuts(allAutomations));
+
+		// switch wifi on
+		System.out.println();
+		System.out.println("switching wifi on (expect kitchen and table light to also turn on)");
+		System.out.println(theManager.changeStatus("wifi", true));
+		System.out.println(textComps(allComponents));
+		System.out.println(textAuts(allAutomations));
+
+		// switch wifi off
+		System.out.println();
+		System.out.println("switching wifi off (expect kitchen light to also turn off, table stays on)");
+		System.out.println(theManager.changeStatus("wifi", false));
+		System.out.println(textComps(allComponents));
+		System.out.println(textAuts(allAutomations));
+
+		// switch table off
+		System.out.println();
+		System.out.println("switching table light off (expect everything to be off)");
+		System.out.println(theManager.changeStatus("Table Light", false));
+		System.out.println(textComps(allComponents));
+		System.out.println(textAuts(allAutomations));
+
+		//remove automation
+		System.out.println();
+		System.out.println("1 aut is removed.");
+		theManager.removeAutomation("Wifi on > Table Light on");
+		allComponents = theManager.getComponents();
+		allAutomations = theManager.getAutomations();
+		System.out.println(textComps(allComponents));
+		System.out.println(textAuts(allAutomations));
+
+		// switch wifi on
+		System.out.println();
+		System.out.println("switching wifi on (expect kitchen light on, table off)");
+		System.out.println(theManager.changeStatus("wifi", true));
+		System.out.println(textComps(allComponents));
+		System.out.println(textAuts(allAutomations));
+
+		// switch wifi off
+		System.out.println();
+		System.out.println("switching wifi off (expect all off)");
+		System.out.println(theManager.changeStatus("wifi", false));
+		System.out.println(textComps(allComponents));
+		System.out.println(textAuts(allAutomations));
+
+		//create an automation
+		System.out.println();
+		System.out.println("1 aut is made.");
+		theManager.createNewAutomation("Kitchen on > Table Light on", allComponents.get(1), true, allComponents.get(2), true);
+		allComponents = theManager.getComponents();
+		allAutomations = theManager.getAutomations();
+		System.out.println(textComps(allComponents));
+		System.out.println(textAuts(allAutomations));
+
+		// switch wifi on
+		System.out.println();
+		System.out.println("switching wifi on (expect all on + 2 triggered: wifi on > kitchen on & kitchen on > table on)");
+		System.out.println(theManager.changeStatus("wifi", on));
+		System.out.println(textComps(allComponents));
+		System.out.println(textAuts(allAutomations));
+
+
+
+	} //end main
+
+//create printtexts:
+	public static String textComps(ArrayList<Component> allComponents){
+		String text = "Currently there are " + allComponents.size() + " components. Named:";
+		for (int i = 0 ; i<allComponents.size() ; i++){
+			text += " " + allComponents.get(i).getName() + " (" + allComponents.get(i).getStatus() +").";
+		}
+		return text;
+	}
+	public static String textAuts(ArrayList<Automation> allAutomations){
+		String text = "Currently there are " + allAutomations.size() + " automations. Named:";
+		for (int i = 0 ; i<allAutomations.size() ; i++){
+			text += 	" " + allAutomations.get(i).getName() + ".";
+		}
+		return text;
+	}
+
+
+}// end doc

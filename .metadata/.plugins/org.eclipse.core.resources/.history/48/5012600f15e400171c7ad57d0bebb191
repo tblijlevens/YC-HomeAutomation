@@ -1,0 +1,52 @@
+package homeAutomation;
+
+public class Automation {
+  //  ATRIBUTES
+  private String name = "";
+  private String description = "";
+  private Component triggerComp;
+  private boolean triggerStatus;
+  private Component responseComp;
+  private boolean responseStatus;
+
+  // CONSTRUCTOR with description
+  public Automation(String name, String description, Component triggerComp, boolean triggerStatus, Component responseComp, boolean responseStatus){
+    this.name = name;
+    this.description = description;
+    this.triggerComp = triggerComp;
+    this.triggerStatus = triggerStatus;
+    this.responseComp = responseComp;
+    this.responseStatus = responseStatus;
+  }
+  //CONSTRUCTOR without constructor
+  public Automation(String name, Component triggerComp, boolean triggerStatus, Component responseComp, boolean responseStatus){
+    this.name = name;
+    this.triggerComp = triggerComp;
+    this.triggerStatus = triggerStatus;
+    this.responseComp = responseComp;
+    this.responseStatus = responseStatus;
+  }
+
+
+  // METHODS
+  public String getName(){
+    return name;
+  }
+  public String getDescr(){
+    return name;
+  }
+  public Component getTriggerComp(){
+    return name;
+  }
+  public boolean getTriggerStatus(){
+    return name;
+  }
+  public Component getRespComp(){
+    return name;
+  }
+  public boolean getRespStatus(){
+    return name;
+  }
+
+
+}

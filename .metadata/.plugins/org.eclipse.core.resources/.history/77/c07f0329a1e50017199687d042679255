@@ -1,0 +1,69 @@
+package homeAutomation;
+
+import java.util.ArrayList;
+
+public class Automation {
+  //  ATRIBUTES
+  private String name = "";
+  private String description = "";
+  private Component triggerComp;
+  private boolean triggerStatus;
+  private Component responseComp;
+  private boolean responseStatus;
+  private ArrayList<String> triggeredAutomations = new ArrayList<>();
+
+
+  //CONSTRUCTOR
+  public Automation(String name, Component triggerComp, boolean triggerStatus, Component responseComp, boolean responseStatus){
+    this.name = name;
+    this.triggerComp = triggerComp;
+    this.triggerStatus = triggerStatus;
+    this.responseComp = responseComp;
+    this.responseStatus = responseStatus;
+  }
+
+
+  // METHODS
+  public String getName(){
+    return name;
+  }
+  public String getDescr(){
+    return name;
+  }
+  public Component getTriggerComp(){
+    return triggerComp;
+  }
+  public boolean getTriggerStatus(){
+    return triggerStatus;
+  }
+  public Component getRespComp(){
+    return responseComp;
+  }
+  public boolean getRespStatus(){
+    return responseStatus;
+  }
+
+/*
+if responseComp&&responseStatus are in other automations trigger that automation, also feedback to manager what automation was triggered
+*/
+  public String triggerAutomation(ArrayList<Automation> automations){
+      responseComp.changeStatus(responseStatus, automations);
+
+      ArrayList<String> allChainedAutos = new ArrayList<>();
+      ArrayList<String> chainedAutos = new ArrayList<>();
+      allChainedAutos.add(this.name);
+
+      for (Automation a : automations){ //loop through automations
+        if (a.getTriggerComp() == this.responseComp && a.getTriggerStatus == this.responseStatus){ // find chain reacting automations
+          chainedAutos = a.triggerAutomation(automations); // trigger that automation. Returns an arraylist with names of its own automation chains
+        }
+      }
+      for (String name : chainedAutos){ //loop through chained automations
+        // add line to only add unique strings...
+        allChainedAutos.add(name);
+      }
+
+      return allChainedAutos; // second, third, etc. automations have returned all names of by them triggered automations. first triggered automation now contains all names of all chained automations and returns it to the HAManager instance
+  }
+
+}

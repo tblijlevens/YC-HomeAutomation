@@ -1,0 +1,38 @@
+package test;
+
+import homeAutomation.Automation;
+import homeAutomation.Component;
+
+public class TestAutomation {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Component wifi = new Component("wifi");
+		Component kitchenLight = new Component("Kitchen Light");
+		System.out.println("Two components are created with names and statusses:");
+		System.out.println(wifi.getName() + " is " + wifi.getStatus());
+		System.out.println(kitchenLight.getName() + " is " + kitchenLight.getStatus());
+
+		System.out.println();
+		System.out.println("Two automations are created with names trigger components&status and response component&status:");
+		System.out.println();
+		Automation wifiOn_kitchenLightOn = new Automation("Wifi on > Kitchen Light on", wifi, true, kitchenLight, true);
+		Automation wifiOff_kitchenLightOff = new Automation("Wifi off > Kitchen Light off", wifi, false, kitchenLight, false);
+		System.out.println(wifiOn_kitchenLightOn.getName() + " has 2 components " + wifiOn_kitchenLightOn.getTriggerComp().getName() + " & " + wifiOn_kitchenLightOn.getRespComp().getName() + "\n and with respectively trigger and response statusses: " + wifiOn_kitchenLightOn.getTriggerStatus() + " & " + wifiOn_kitchenLightOn.getRespStatus
+		System.out.println(wifiOff_kitchenLightOff.getName() + " has 2 components " + wifiOff_kitchenLightOff.getTriggerComp().getName() + " & " + wifiOff_kitchenLightOff.getRespComp().getName() + "\n and with respectively trigger and response statusses: " + wifiOff_kitchenLightOff.getTriggerStatus() + " & " + wifiOff_kitchenLightOff.getRespStatus());
+
+		System.out.println("wifion automation is triggered:");
+		wifiOn_kitchenLightOn.triggerAutomation();
+		System.out.println(wifi.getName() + " is " + wifi.getStatus());
+		System.out.println(kitchenLight.getName() + " is " + kitchenLight.getStatus());
+
+		System.out.println("wifioff automation is triggered:");
+		wifiOff_kitchenLightOff.triggerAutomation();
+		System.out.println(wifi.getName() + " is " + wifi.getStatus());
+		System.out.println(kitchenLight.getName() + " is " + kitchenLight.getStatus());
+
+
+	}
+
+}
