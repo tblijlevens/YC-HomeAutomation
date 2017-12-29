@@ -291,7 +291,7 @@ public class HAMFrame extends JFrame {
 				if (automationsText == null) {
 			automationsText = new JTextArea();
 			automationsText.setEditable(false);
-			automationsText.setBounds(452, 43, 360, 206);
+			automationsText.setBounds(452, 67, 360, 206);
 			automationsText.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 			contentPane.add(automationsText);
 				}
@@ -305,7 +305,7 @@ public class HAMFrame extends JFrame {
 						public void actionPerformed(ActionEvent arg0) {
 						}
 					});
-					createAutoButton.setBounds(452, 257, 360, 38);
+					createAutoButton.setBounds(452, 283, 360, 38);
 					contentPane.add(createAutoButton);
 				}
 				return createAutoButton;
@@ -326,7 +326,7 @@ public class HAMFrame extends JFrame {
 				if (triggeredText == null) {
 			triggeredText = new JTextArea();
 			triggeredText.setEditable(false);
-			triggeredText.setBounds(452, 386, 360, 206);
+			triggeredText.setBounds(462, 386, 350, 206);
 			triggeredText.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
 			contentPane.add(triggeredText);
@@ -451,9 +451,5 @@ public class HAMFrame extends JFrame {
 				// changeStatus of component with this "name"
 				String allTriggered = homeControl.changeStatus(name, false);
 				updateAll(allTriggered);
-			}
-			private void createAutoButtonAction(){
-			    new CreateAutoFrame().setVisible(true);
-			    // HAMFrame.this.dispose(); // if you want the first frame to close
 			}
 }
