@@ -3,7 +3,7 @@ package homeAutomation;
 import java.util.ArrayList;
 
 /**
- * Class responsible for managing components.
+ * Class responsible for managing statuses of components.
  * @author tblijlevens
  *
  */

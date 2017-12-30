@@ -149,7 +149,7 @@ public class HAManager {
 					if (a.getTriggerComp() == c && a.getTriggerStatus() == stat){ //find automations that have both component and status as its triggerComp and triggerStatus.
 
 						chainedAutos = a.triggerAutomation(automations); // trigger that automation. chainedAutos now contains an ArrayList of Strings of all names of all chained automations
-						for (String s : chainedAutos){ //loop through chained automations
+						for (String s : chainedAutos){ //loop through chainedAutos
 							allChainedAutos.add(s);  //add all names from chainedAutos to allChainedAutos (chainedAutos will be re-initialised in every loop, losing the names, allChainedAutos will contain all names added each loop and keep it until the end of the method)
 						}
 					}
