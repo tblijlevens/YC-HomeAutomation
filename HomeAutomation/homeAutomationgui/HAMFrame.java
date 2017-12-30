@@ -373,8 +373,8 @@ public class HAMFrame extends JFrame {
 				homeControl.createNewComponent("Heating");
 				homeControl.createNewComponent("Table Light");
 				homeControl.createNewComponent("Couch Light");
-				homeControl.createNewAutomation("Wifi on >> Heating on", "WiFi", true, "Heating", true);
-				homeControl.createNewAutomation("Table on >> Couch on", "Table Light", true, "Couch Light", true);
+				homeControl.createNewAutomation("WiFi On >> Heating On", "WiFi", true, "Heating", true);
+				homeControl.createNewAutomation("Table Light On >> Couch Light On", "Table Light", true, "Couch Light", true);
 
 				// show all available automations:
 				automationsText.setText(getAllAutomations());
@@ -394,7 +394,7 @@ public class HAMFrame extends JFrame {
 				}
 				return allAutomations;
 			}
-			
+
 			//EVENT HANDLERS
 
 			/*

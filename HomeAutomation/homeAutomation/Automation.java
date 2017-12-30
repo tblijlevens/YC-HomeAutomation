@@ -45,9 +45,6 @@ public class Automation {
   public String getName(){
     return name;
   }
-  public String getDescr(){
-    return name;
-  }
   public Component getTriggerComp(){
     return triggerComp;
   }

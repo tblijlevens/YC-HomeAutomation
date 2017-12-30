@@ -69,10 +69,10 @@ public class HAManager {
 	 * of a component is defined as a trigger in an automation the status of Component
 	 * <code>responseComp</code> in that automation will be changed to <code>responseStatus</code>.
 	 * Only creates a new automation if it has a unique name (does not already exist).
-	 * @param autoName the name of the automation
-	 * @param triggerCompName the Component which triggers the automation
+	 * @param name the name of the automation
+	 * @param triggerComp the Component which triggers the automation
 	 * @param triggerStatus the prerequisite status of <code>triggerComp</code> to trigger the automation
-	 * @param responseCompName the Component which responses to the trigger
+	 * @param responseComp the Component which responses to the trigger
 	 * @param responseStatus the wanted status of <code>responseComp</code>
 	 * @return returns a boolean feedback of success (fails if no unique name)
 	 */
