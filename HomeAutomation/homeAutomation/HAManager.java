@@ -15,20 +15,19 @@ public class HAManager {
 	//  ATRIBUTES
 	private ArrayList<Component> components = new ArrayList<>();
 	private ArrayList<Automation> automations = new ArrayList<>();
-//	private ArrayList<String> triggeredAutomations = new ArrayList<>();
 
 	// CONSTRUCTOR
 	public HAManager(){
 	}
 
 	// METHODS
-
 	public ArrayList<Component> getComponents(){
 		return components;
 	}
 	public ArrayList<Automation> getAutomations(){
 		return automations;
 	}
+
 	/**
 	* Creates a new component and adds it to the <code>components</code> list attribute.
 	* Only adds components with unique names.
@@ -42,7 +41,7 @@ public class HAManager {
 				break;
 			}
 		}
-		if (!exists){
+		if (!exists){	// only add component if it does not already exist
 			components.add(new Component(name));
 		}
 	}
@@ -51,11 +50,11 @@ public class HAManager {
 // should not succeed when automation contains this component, or should ask to also remove those automations.
 	/**
 	 * Removes component with given name from the <code>components</code> list attribute.
-	 * @param name the name of the component
+	 * @param name the name of the component to remove
 	 */
 	public void removeComponent(String name){
 		Component removeThis = null;
-		for (Component c : components){ //see if automation does not already exist
+		for (Component c : components){ // look up the right component, by comparing names
 			if (c.getName().equals(name)){
 				removeThis = c;
 			}
@@ -64,10 +63,11 @@ public class HAManager {
 			components.remove(removeThis);
 		}
 	}
+
 	/**
 	 * Creates a new automation, linking two components together. When a status change
 	 * of a component is defined as a trigger in an automation the status of Component
-	 * <code>responseComp</code> will be changed to <code>responseStatus</code>.
+	 * <code>responseComp</code> in that automation will be changed to <code>responseStatus</code>.
 	 * Only creates a new automation if it has a unique name (does not already exist).
 	 * @param name the name of the automation
 	 * @param triggerComp the Component which triggers the automation
@@ -84,10 +84,10 @@ public class HAManager {
 				exists = true;
 			}
 		}
-		if (!exists){
+		if (!exists){	//only makes an automation if it does not already exist
 			Component triggerComp = null;
 			Component responseComp = null;
-			for (Component c : components){	// find right components
+			for (Component c : components){	// find the right components by comparing names
 				if (c.getName().equals(triggerCompName)){
 					triggerComp = c;
 				}
@@ -95,9 +95,9 @@ public class HAManager {
 					responseComp = c;
 				}
 			}
-			if (triggerComp!=null && responseComp !=null){
+			if (triggerComp!=null && responseComp !=null){ // if both components are found
 				Automation newAutomation = new Automation(autoName, triggerComp, triggerStatus, responseComp, responseStatus); // create new automation
-				automations.add(newAutomation);
+				automations.add(newAutomation); // add automation to ArrayList "automations"
 				return true; //returns succes feedback
 			}
 		}
@@ -108,11 +108,11 @@ public class HAManager {
 	/**
 	 * Removes Automation with the given name from the <code>automations</code> list
 	 * attribute.
-	 * @param name
+	 * @param name the name of the automations that needs to be removed
 	 */
 	public void removeAutomation(String name){
 		Automation removeThis = null;
-		for (Automation a : automations){ //see if automation does not already exist
+		for (Automation a : automations){ // find the right automation by comparing names
 			if (a.getName().equals(name)){
 				removeThis = a;
 			}
@@ -138,36 +138,31 @@ public class HAManager {
 		String triggeredAutomations = "";
 		ArrayList<String> allChainedAutos = new ArrayList<>();
 		ArrayList<String> chainedAutos = new ArrayList<>();
-		for (Component c : components){
-			if (c.getName()==name && c.getStatus() != stat){ //if current status is not "stat"
-				c.changeStatus(stat); //change status
-				for (Automation a : automations){ //loop through automations
-					if (a.getTriggerComp() == c && a.getTriggerStatus() == stat){ // find triggered automations: component and status are triggers in an automation
 
-						chainedAutos = a.triggerAutomation(automations); // trigger that automation. first triggered automation now contains all names of all chained automations and returns it to this HAManager instance
+		// Loop through all components to see if status needs to be changed and consequently if there are automations that need to be triggered because of this status change:
+		for (Component c : components){ // loop through all components
+			if (c.getName()==name && c.getStatus() != stat){ //check if the wanted status is not the current status (only execute status change if wanted status is different than current status)
+				c.changeStatus(stat); //change status for the right component
+
+				// find all automations that this status change should trigger: when component and status are triggers in an automation.
+				for (Automation a : automations){ //loop through automations
+					if (a.getTriggerComp() == c && a.getTriggerStatus() == stat){ //find automations that have both component and status as its triggerComp and triggerStatus.
+
+						chainedAutos = a.triggerAutomation(automations); // trigger that automation. chainedAutos now contains an ArrayList of Strings of all names of all chained automations
 						for (String s : chainedAutos){ //loop through chained automations
-							// add line to only add unique strings...
-							allChainedAutos.add(s);  //add all names to allChainedAutos
+							allChainedAutos.add(s);  //add all names from chainedAutos to allChainedAutos (chainedAutos will be re-initialised in every loop, losing the names, allChainedAutos will contain all names added each loop and keep it until the end of the method)
 						}
 					}
 				}
 			}
 		}
 
+		// after all automations have been triggered add all names of all triggered automations to a String.
 		for (String s : allChainedAutos){
 			triggeredAutomations += s +"\n";
 		}
-		return triggeredAutomations;
+		return triggeredAutomations;// can be used by gui to give feedback to user
 	} // endmethod changeStatus
 
-	public Component getComponent(String name){
-		Component comp = null;
-		for (Component c : components){	// find right components
-			if (c.getName()==name){
-				comp = c;
-			}
-		}
-		return comp;
-	}
 
 }

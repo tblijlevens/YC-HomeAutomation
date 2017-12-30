@@ -381,8 +381,8 @@ public class HAMFrame extends JFrame {
 				homeControl.createNewAutomation("Couch on >> Heating off", "Couch Light", true, "Heating", false);
 				homeControl.createNewAutomation("Heating off >> Wifi on", "Heating", false, "WiFi", true);
 */
-				// show all automations:
 
+				// show all automations:
 				automationsText.setText(getAllAutomations());
 				updateAll("");
 			}
