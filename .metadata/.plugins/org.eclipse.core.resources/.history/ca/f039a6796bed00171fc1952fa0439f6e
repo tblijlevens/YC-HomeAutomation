@@ -16,11 +16,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
+import javax.swing.JRadioButton;
 
-/*
-class responsible for showing a user interface in which the user can create
-a new automation, which will appear in the HAMFrame user interface
-*/
 public class CreateAutoDialog2 extends JDialog {
 
 	private HAManager homeControl;
@@ -32,6 +29,9 @@ public class CreateAutoDialog2 extends JDialog {
 	private JTextField autoNameText;
 
 
+	/**
+	 * Launch the application.
+	 */
 	public static void main(String[] args) {
 		try {
 			CreateAutoDialog2 dialog = new CreateAutoDialog2();
@@ -42,7 +42,9 @@ public class CreateAutoDialog2 extends JDialog {
 		}
 	}
 
-// two constructors
+	/**
+	 * Create the dialog.
+	 */
 	public CreateAutoDialog2() {
 		initialize();
 		myInit();
@@ -53,9 +55,6 @@ public class CreateAutoDialog2 extends JDialog {
 		myInit();
 	}
 
-	/*
-	responsible for filling the user interface with initial graphical elements
-	*/
 	private void initialize() {
 		setBounds(100, 100, 850, 650);
 		getContentPane().setLayout(new BorderLayout());
@@ -66,6 +65,8 @@ public class CreateAutoDialog2 extends JDialog {
 		contentPanel.add(getRCompComboBox());
 		contentPanel.add(getTOnOffComboBox());
 		contentPanel.add(getROnOffComboBox());
+
+
 
 		JLabel lblWhen = new JLabel("When");
 		lblWhen.setBounds(52, 56, 70, 15);
@@ -122,14 +123,12 @@ public class CreateAutoDialog2 extends JDialog {
 		}
 	}
 
-
-// methods giving the graphical elements its properties and behaviour
 	private JComboBox getTCompComboBox(){
 		if (tCompComboBox == null){
 			tCompComboBox = new JComboBox();
 			tCompComboBox.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					autoName();
+					choiceMade();
 				}
 			});
 			tCompComboBox.setBounds(107, 51, 197, 25);
@@ -143,7 +142,7 @@ public class CreateAutoDialog2 extends JDialog {
 			rCompComboBox = new JComboBox();
 			rCompComboBox.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					autoName();
+					choiceMade();
 				}
 			});
 			rCompComboBox.setBounds(107, 95, 197, 25);
@@ -156,7 +155,7 @@ private JComboBox getTOnOffComboBox(){
 		tOnOffComboBox = new JComboBox();
 		tOnOffComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				autoName();
+				choiceMade();
 			}
 		});
 		tOnOffComboBox.setBounds(444, 51, 144, 25);
@@ -169,7 +168,7 @@ private JComboBox getROnOffComboBox(){
 		rOnOffComboBox = new JComboBox();
 		rOnOffComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				autoName();
+				choiceMade();
 			}
 		});
 		rOnOffComboBox.setBounds(444, 97, 144, 25);
@@ -182,9 +181,6 @@ private JComboBox getROnOffComboBox(){
 	///////// OWN CODE ///////////
 	//////////////////////////////
 
-	/*
-	initializes al combobox elements with the correct options (components and statuses)
-	*/
 	private void myInit(){
 		tOnOffComboBox.addItem("-on/off-");
 		tOnOffComboBox.addItem("On");
@@ -202,12 +198,7 @@ private JComboBox getROnOffComboBox(){
 		}
 	}
 
-	/*
-	automatically generates a name based on the chosen options by the user and
-	enters that name in the name textfield. Only works if all needed comboboxes
-	have a valid input
-	*/
-	private void autoName(){
+	private void choiceMade(){
 		String tComp = "" + tCompComboBox.getSelectedItem();
 		String tStat = "" + tOnOffComboBox.getSelectedItem();
 		String rComp = "" + rCompComboBox.getSelectedItem();
@@ -218,11 +209,6 @@ private JComboBox getROnOffComboBox(){
 		}
 	}
 
-	/*
-	responsible for creating the new automation based on given input by the user.
-	Updates the HAManager instance and opens a new HAMFrame with the updated
-	HAManager instance (containing the new automation).
-	*/
 	private void okButtonAction(){
 		String tComp = "" + tCompComboBox.getSelectedItem();
 		String tStatString = "" + tOnOffComboBox.getSelectedItem();
@@ -250,16 +236,10 @@ private JComboBox getROnOffComboBox(){
 
 			//create new automation with given arguments
 			homeControl.createNewAutomation(name, tComp, tStat, rComp, rStat);
-
-			//create new HAMFrame with the updated homeControl (HAManager instance)
 			new HAMFrame(homeControl).setVisible(true);
-			CreateAutoDialog2.this.dispose(); // close this dialog
+			CreateAutoDialog2.this.dispose();
 		}
 	}
-
-	/*
-	returns to HAMFrame with unchanged HAManager instance (no new automation is added)
-	*/
 	private void cancelButtonAction(){
 		new HAMFrame(homeControl).setVisible(true);
 		CreateAutoDialog2.this.dispose();

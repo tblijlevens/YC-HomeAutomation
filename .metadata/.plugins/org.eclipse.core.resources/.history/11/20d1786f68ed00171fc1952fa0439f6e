@@ -1,5 +1,6 @@
 package homeAutomationgui;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -12,19 +13,22 @@ import homeAutomation.HAManager;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Window;
+
 import javax.swing.JToggleButton;
+import javax.swing.SwingUtilities;
+import javax.swing.JSlider;
 import java.awt.Color;
+import java.awt.Dialog.ModalityType;
+
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 
-/*
-class responsible for showing a user interface in which the user can change component
-statuses, get feedback on which automations were triggered and create new automations
-*/
 public class HAMFrame extends JFrame {
 
 	private HAManager homeControl;
@@ -49,6 +53,9 @@ public class HAMFrame extends JFrame {
 	private JButton createAutoButton;
 
 
+	/**
+	 * Launch the application.
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -62,7 +69,9 @@ public class HAMFrame extends JFrame {
 		});
 	}
 
-// two constructors
+	/**
+	 * Create the frame.
+	 */
 	public HAMFrame() {
 		homeControl = new HAManager();
 		initialize();
@@ -74,9 +83,6 @@ public class HAMFrame extends JFrame {
 		myInit();
 	}
 
-	/*
-	responsible for filling the user interface with initial graphical elements
-	*/
 	private void initialize() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 850, 650);
@@ -113,8 +119,6 @@ public class HAMFrame extends JFrame {
 		contentPane.add(btnTestbutton);
 	}
 
-	// methods giving the graphical elements its properties and behaviour
-
 			private JLabel getComponentsLabel() {
 				if (componentsLabel == null) {
 					componentsLabel = new JLabel("Devices");
@@ -140,7 +144,6 @@ public class HAMFrame extends JFrame {
 				}
 			return wifiOnToggle;
 			}
-
 			private JToggleButton getWifiOffToggle() {
 				if (wifiOffToggle == null) {
 			wifiOffToggle = new JToggleButton("Off");
@@ -157,7 +160,6 @@ public class HAMFrame extends JFrame {
 				}
 			return wifiOffToggle;
 			}
-
 			private JTextArea getWifiText() {
 				if (wifiText == null) {
 			wifiText = new JTextArea();
@@ -169,7 +171,6 @@ public class HAMFrame extends JFrame {
 				}
 			return wifiText;
 			}
-
 			private JTextArea getHeatingText() {
 				if (heatingText == null) {
 			heatingText = new JTextArea();
@@ -181,7 +182,6 @@ public class HAMFrame extends JFrame {
 				}
 			return heatingText;
 			}
-
 			private JToggleButton getHeatingOffToggle() {
 				if (heatingOffToggle == null) {
 			heatingOffToggle = new JToggleButton("Off");
@@ -213,7 +213,6 @@ public class HAMFrame extends JFrame {
 				}
 			return heatingOnToggle;
 			}
-
 			private JTextArea getTableText() {
 				if (tableText == null) {
 			tableText = new JTextArea();
@@ -242,7 +241,6 @@ public class HAMFrame extends JFrame {
 				}
 			return tableOffToggle;
 			}
-
 			private JToggleButton getTableOnToggle() {
 				if (tableOnToggle == null) {
 			tableOnToggle = new JToggleButton("On");
@@ -257,7 +255,6 @@ public class HAMFrame extends JFrame {
 				}
 			return tableOnToggle;
 			}
-
 			private JTextArea getCouchText() {
 				if (couchText == null) {
 			couchText = new JTextArea();
@@ -284,7 +281,6 @@ public class HAMFrame extends JFrame {
 			couchOffToggle.setBounds(136, 174, 73, 25);
 			contentPane.add(couchOffToggle);
 				}
-
 			return couchOffToggle;
 			}
 			private JToggleButton getCouchOnToggle() {
@@ -337,6 +333,7 @@ public class HAMFrame extends JFrame {
 				return createAutoButton;
 			}
 
+
 			private JLabel getLblTriggeredAutomations() {
 				if (lblTriggeredAutomations == null) {
 			lblTriggeredAutomations = new JLabel("Triggered automations:");
@@ -347,7 +344,6 @@ public class HAMFrame extends JFrame {
 				}
 			return lblTriggeredAutomations;
 			}
-
 			private JTextArea getTriggeredText() {
 				if (triggeredText == null) {
 			triggeredText = new JTextArea();
@@ -364,44 +360,44 @@ public class HAMFrame extends JFrame {
 			///////// OWN CODE ///////////
 			//////////////////////////////
 
-			/*
-			initializes the HAManager instance (homeControl) with a startset of	4
-			components and 2 automations. Shows the automations in the correct textarea.
-			*/
 			private void myInit(){
+				// create 4 basic components and 3 automations
 				homeControl.createNewComponent("WiFi");
 				homeControl.createNewComponent("Heating");
 				homeControl.createNewComponent("Table Light");
 				homeControl.createNewComponent("Couch Light");
 				homeControl.createNewAutomation("Wifi on >> Heating on", "WiFi", true, "Heating", true);
+//				homeControl.createNewAutomation("Wifi off >> Table off", "WiFi", false, "Table Light", false);
 				homeControl.createNewAutomation("Table on >> Couch on", "Table Light", true, "Couch Light", true);
+//				homeControl.createNewAutomation("Heating on >> Table on", "Heating", true, "Table Light", true);
 
-				// show all available automations:
+/*			for a more complex of chaining automations comment out above automation creations
+				and uncomment below automation creations.
+				Chain: when turning on wifi, triggers a lot of automations,some of them double:
+				homeControl.createNewAutomation("Wifi on >> Heating on", "WiFi", true, "Heating", true);
+				homeControl.createNewAutomation("Wifi on >> Table on", "WiFi", true, "Table Light", true);
+				homeControl.createNewAutomation("Table on >> Couch on", "Table Light", true, "Couch Light", true);
+				homeControl.createNewAutomation("Couch on >> Wifi off", "Couch Light", true, "WiFi", false);
+				homeControl.createNewAutomation("Couch on >> Heating off", "Couch Light", true, "Heating", false);
+				homeControl.createNewAutomation("Heating off >> Wifi on", "Heating", false, "WiFi", true);
+*/
+
+				// show all automations:
 				automationsText.setText(getAllAutomations());
-				updateAll(""); // sets all toggles in the correct position corresponding the statuses of the components
+				updateAll("");
 			}
 
 
-			// HELP METHODS
+			//Event handler code
 
-			/*
-			finds all existing automations and returns a String with all of their names
-			*/
-			private String getAllAutomations(){
-				String allAutomations = "";
-				for (Automation a : homeControl.getAutomations()){
-					allAutomations += a.getName() + "\n";
-				}
-				return allAutomations;
-			}
-			
-			//EVENT HANDLERS
-
-			/*
-			loop through all components. search by their names and check their statuses.
-			Update all toggles accordingly plus set background colors for extra clear user feedback.
-			*/
 			private void updateAll(String triggeredAutomations){
+				// the list with triggeredAutomations should be cleared and updated
+				// all toggles should correspond to the new statuses of all components
+
+				/*
+				loop through all components. search by their names and check their statuses.
+				Update all toggles accordingly plus set background colors for extra clearer user feedback.
+				*/
 				for (Component c : homeControl.getComponents()){
 						if ("WiFi".equals(c.getName()) && c.getStatus()){
 							wifiOnToggle.setSelected(true);
@@ -464,34 +460,27 @@ public class HAMFrame extends JFrame {
 				}
 				triggeredText.setText(triggeredAutomations);
 			}
-
-			/*
-			on toggle click: changes the status of the corresponding component.
-			The status change could trigger automations causing more components
-			to change status.
-			*/
+			private String getAllAutomations(){
+				String allAutomations = "";
+				for (Automation a : homeControl.getAutomations()){
+					allAutomations += a.getName() + "\n";
+				}
+				return allAutomations;
+			}
 			private void onToggleAction(String name){
+				// changeStatus of component with this "name"
 				String allTriggered = homeControl.changeStatus(name, true);
-				updateAll(allTriggered); // updates the gui by setting the toggles in the correct positions and showing all triggered automation names.
+				updateAll(allTriggered);
 			}
 			private void offToggleAction(String name){
+				// changeStatus of component with this "name"
 				String allTriggered = homeControl.changeStatus(name, false);
 				updateAll(allTriggered);
 			}
-
-			/*
-			on button click: shows a dialog in which the user can create a new automation
-			*/
 			private void createAutoButtonAction(){
 			    new CreateAutoDialog2(homeControl).setVisible(true);
 			   	HAMFrame.this.dispose();
 			}
-
-			/*
-			on button click: prints out information to console for testing puposes.
-			Currently shows all existing automations with their trigger and response
-			components and all existing components with their statuses.
-			*/
 			private void testButtonAction(){
 				for (Automation a : homeControl.getAutomations()){
 					System.out.println(a.getName());
