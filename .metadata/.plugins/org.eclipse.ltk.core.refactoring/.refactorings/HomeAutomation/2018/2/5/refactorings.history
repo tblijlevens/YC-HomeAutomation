@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract method &apos;private boolean compExists(String name)&apos; from &apos;homeAutomation.HAManager.createNewComponent()&apos; to &apos;homeAutomation.HAManager&apos;&#x0A;- Original project: &apos;HomeAutomation&apos;&#x0A;- Method name: &apos;compExists&apos;&#x0A;- Destination type: &apos;homeAutomation.HAManager&apos;&#x0A;- Declared visibility: &apos;private&apos;" comments="false" description="Extract method &apos;compExists&apos;" destination="0" exceptions="false" flags="786434" id="org.eclipse.jdt.ui.extract.method" input="/&lt;homeAutomation{HAManager.java" name="compExists" replace="false" selection="941 172" stamp="1517508028620" version="1.0" visibility="2"/>
+</session>

@@ -34,16 +34,23 @@ public class HAManager {
 	* @param name the name of the created component
 	*/
 	public void createNewComponent(String name){
-		boolean exists = false;
-		for (Component c : components){ //see if component does not already exist
-			if (c.getName().equals(name)){
-				exists = true;
-				break;
-			}
-		}
+		boolean exists = compExists(name);
 		if (!exists){	// only add component if it does not already exist
 			components.add(new Component(name));
 		}
+	}
+
+	/*
+	*	Helper method to check if a given component (by name) already exists
+	* in the list of components
+	*/
+	private boolean compExists(String name) {
+		for (Component c : components){
+			if (c.getName().equals(name)){
+				return true;
+			}
+		}
+		return false;
 	}
 
 

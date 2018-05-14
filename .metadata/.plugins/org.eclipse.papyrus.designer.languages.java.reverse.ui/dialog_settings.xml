@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="HomeAutomation" key="/HomeAutomation/HomeAutomation.umlHomeAutomation:projectName"/>
+	<item value="0" key="/HomeAutomation/HomeAutomation.umlHomeAutomation:selectedParserIndex"/>
+	<list key="/HomeAutomation/HomeAutomation.umlHomeAutomation:creationpaths">
+		<item value="java.* ; ; java"/>
+		<item value="org.eclipse.papyrus.* ; ; *"/>
+		<item value="org.eclipse.* ; org.eclipse.papyrus.* ; *"/>
+		<item value=" org.osgi.* ; ; osgi.*"/>
+		<item value=" datatype.* ; ; datatype"/>
+	</list>
+	<list key="/HomeAutomation/HomeAutomation.umlHomeAutomation:searchpaths">
+		<item value="java"/>
+		<item value="*"/>
+		<item value="osgi.*"/>
+		<item value="datatype"/>
+	</list>
+</section>

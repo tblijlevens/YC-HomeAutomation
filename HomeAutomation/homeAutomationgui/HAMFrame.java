@@ -103,14 +103,6 @@ public class HAMFrame extends JFrame {
 		contentPane.add(getTriggeredText());
 		contentPane.add(getCreateAutoButton());
 
-		JButton btnTestbutton = new JButton("Testbutton");
-		btnTestbutton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				testButtonAction();
-			}
-		});
-		btnTestbutton.setBounds(143, 320, 117, 25);
-		contentPane.add(btnTestbutton);
 	}
 
 	// methods giving the graphical elements its properties and behaviour
@@ -487,21 +479,6 @@ public class HAMFrame extends JFrame {
 			   	HAMFrame.this.dispose();
 			}
 
-			/*
-			on button click: prints out information to console for testing puposes.
-			Currently shows all existing automations with their trigger and response
-			components and all existing components with their statuses.
-			*/
-			private void testButtonAction(){
-				for (Automation a : homeControl.getAutomations()){
-					System.out.println(a.getName());
-					System.out.println("t: " + a.getTriggerComp().getName());
-					System.out.println("r: " + a.getRespComp().getName());
-				}
-				System.out.println();
-				for (Component c : homeControl.getComponents()){
-					System.out.println(c.getName() + ": " + c.getStatus());
-				}
-			}
+
 
 }

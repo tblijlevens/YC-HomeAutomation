@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:PapyrusJava="http://www.eclipse.org/papyrus/PapyrusJava/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:standard="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+  <uml:Model xmi:id="_JXy8QAB3EeiUg4x9yHMHjA" name="HomeAutomation">
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_JejEgAB3EeiUg4x9yHMHjA">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Interaction" xmi:id="_JYCM0AB3EeiUg4x9yHMHjA" name="Interaction1"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_R-1DgAB3EeiUg4x9yHMHjA" name="HomeAutomation">
+      <packagedElement xmi:type="uml:Package" xmi:id="_R_ZrQAB3EeiUg4x9yHMHjA" name="homeAutomation">
+        <packagedElement xmi:type="uml:Class" xmi:id="_R_aSUAB3EeiUg4x9yHMHjA" name="Component" visibility="public">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_SBf9AAB3EeiUg4x9yHMHjA" name="name" visibility="private" type="_R_bgcQB3EeiUg4x9yHMHjA" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_SBgkEAB3EeiUg4x9yHMHjA" name="defaultValue">
+              <language>JAVA</language>
+              <body>&quot;&quot;</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_SBvNkAB3EeiUg4x9yHMHjA" name="Status" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_SBv0oAB3EeiUg4x9yHMHjA" name="defaultValue">
+              <language>JAVA</language>
+              <body>false</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SB0GEAB3EeiUg4x9yHMHjA" name="Component" specification="_SBwbsAB3EeiUg4x9yHMHjA">
+            <language>JAVA</language>
+            <body>
+    this.name = name;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SB17QQB3EeiUg4x9yHMHjA" name="getName" specification="_SB0tIAB3EeiUg4x9yHMHjA">
+            <language>JAVA</language>
+            <body>
+    return name;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SB3wcQB3EeiUg4x9yHMHjA" name="getStatus" specification="_SB3JYAB3EeiUg4x9yHMHjA">
+            <language>JAVA</language>
+            <body>
+    return Status;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SB4-kQB3EeiUg4x9yHMHjA" name="changeStatus" specification="_SB4XgAB3EeiUg4x9yHMHjA">
+            <language>JAVA</language>
+            <body>
+    this.Status = status;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_SBwbsAB3EeiUg4x9yHMHjA" name="Component" visibility="public" method="_SB0GEAB3EeiUg4x9yHMHjA">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SBzfAAB3EeiUg4x9yHMHjA" name="name" type="_R_bgcQB3EeiUg4x9yHMHjA"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_SB0tIAB3EeiUg4x9yHMHjA" name="getName" visibility="public" method="_SB17QQB3EeiUg4x9yHMHjA">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SB17QAB3EeiUg4x9yHMHjA" type="_R_bgcQB3EeiUg4x9yHMHjA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_SB3JYAB3EeiUg4x9yHMHjA" name="getStatus" visibility="public" method="_SB3wcQB3EeiUg4x9yHMHjA">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SB3wcAB3EeiUg4x9yHMHjA" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_SB4XgAB3EeiUg4x9yHMHjA" name="changeStatus" visibility="public" method="_SB4-kQB3EeiUg4x9yHMHjA">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SB4-kAB3EeiUg4x9yHMHjA" name="status">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+            </ownedParameter>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_SB8o8AB3EeiUg4x9yHMHjA" name="HAManager" visibility="public">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_SB93EAB3EeiUg4x9yHMHjA" name="components" visibility="private" type="_R_aSUAB3EeiUg4x9yHMHjA" isUnique="false">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SB_FMAB3EeiUg4x9yHMHjA"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SB_FMQB3EeiUg4x9yHMHjA" value="*"/>
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_SB_sQAB3EeiUg4x9yHMHjA" name="defaultValue">
+              <language>JAVA</language>
+              <body>new ArrayList&lt;>()</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_SCA6YQB3EeiUg4x9yHMHjA" name="automations" visibility="private" type="_SCA6YAB3EeiUg4x9yHMHjA" isUnique="false">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SCBhcAB3EeiUg4x9yHMHjA"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SCCIgAB3EeiUg4x9yHMHjA" value="*"/>
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_SCCIgQB3EeiUg4x9yHMHjA" name="defaultValue">
+              <language>JAVA</language>
+              <body>new ArrayList&lt;>()</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SCFL0AB3EeiUg4x9yHMHjA" name="HAManager" specification="_SCCvkAB3EeiUg4x9yHMHjA">
+            <language>JAVA</language>
+            <body>
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SCHoEAB3EeiUg4x9yHMHjA" name="getComponents" specification="_SCFy4AB3EeiUg4x9yHMHjA">
+            <language>JAVA</language>
+            <body>
+    return components;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SCI2MgB3EeiUg4x9yHMHjA" name="getAutomations" specification="_SCIPIAB3EeiUg4x9yHMHjA">
+            <language>JAVA</language>
+            <body>
+    return automations;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SCKrYAB3EeiUg4x9yHMHjA" name="createNewComponent" specification="_SCJdQAB3EeiUg4x9yHMHjA">
+            <language>JAVA</language>
+            <body>
+    boolean exists = false;
+    for (//see if component does not already exist
+    Component c : //see if component does not already exist
+    components) {
+        if (c.getName().equals(name)) {
+            exists = true;
+            break;
+        }
+    }
+    if (// only add component if it does not already exist
+    !exists) {
+        components.add(new Component(name));
+    }
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SCL5gAB3EeiUg4x9yHMHjA" name="removeComponent" specification="_SCLScAB3EeiUg4x9yHMHjA">
+            <language>JAVA</language>
+            <body>
+    Component removeThis = null;
+    for (// look up the right component, by comparing names
+    Component c : // look up the right component, by comparing names
+    components) {
+        if (c.getName().equals(name)) {
+            removeThis = c;
+        }
+    }
+    if (removeThis != null) {
+        components.remove(removeThis);
+    }
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SCQK8QB3EeiUg4x9yHMHjA" name="createNewAutomation" specification="_SCNusAB3EeiUg4x9yHMHjA">
+            <language>JAVA</language>
+            <body>
+    boolean exists = false;
+    for (//see if automation does not already exist
+    Automation a : //see if automation does not already exist
+    automations) {
+        if (a.getName().equals(autoName)) {
+            exists = true;
+        }
+    }
+    if (//only makes an automation if it does not already exist
+    !exists) {
+        Component triggerComp = null;
+        Component responseComp = null;
+        for (// find the right components by comparing names
+        Component c : // find the right components by comparing names
+        components) {
+            if (c.getName().equals(triggerCompName)) {
+                triggerComp = c;
+            } else if (c.getName().equals(responseCompName)) {
+                responseComp = c;
+            }
+        }
+        if (// if both components are found
+        triggerComp != null &amp;&amp; responseComp != null) {
+            // create new automation
+            Automation newAutomation = new Automation(autoName, triggerComp, triggerStatus, responseComp, responseStatus);
+            // add automation to ArrayList &quot;automations&quot;
+            automations.add(newAutomation);
+            //returns succes feedback
+            return true;
+        }
+    }
+    // returns fail feedback
+    return false;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SCSnMQB3EeiUg4x9yHMHjA" name="removeAutomation" specification="_SCRZEAB3EeiUg4x9yHMHjA">
+            <language>JAVA</language>
+            <body>
+    Automation removeThis = null;
+    for (// find the right automation by comparing names
+    Automation a : // find the right automation by comparing names
+    automations) {
+        if (a.getName().equals(name)) {
+            removeThis = a;
+        }
+    }
+    if (removeThis != null) {
+        automations.remove(removeThis);
+    }
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SCVqgAB3EeiUg4x9yHMHjA" name="changeStatus" specification="_SCT1UAB3EeiUg4x9yHMHjA">
+            <language>JAVA</language>
+            <body>
+    String triggeredAutomations = &quot;&quot;;
+    ArrayList&lt;String> allChainedAutos = new ArrayList&lt;>();
+    ArrayList&lt;String> chainedAutos = new ArrayList&lt;>();
+    // Loop through all components to see if status needs to be changed and consequently if there are automations that need to be triggered because of this status change:
+    for (// loop through all components
+    Component c : // loop through all components
+    components) {
+        if (//check if the wanted status is not the current status (only execute status change if wanted status is different than current status)
+        c.getName() == name &amp;&amp; c.getStatus() != stat) {
+            //change status for the right component
+            c.changeStatus(stat);
+            // find all automations that this status change should trigger: when component and status are triggers in an automation.
+            for (//loop through automations
+            Automation a : //loop through automations
+            automations) {
+                if (//find automations that have both component and status as its triggerComp and triggerStatus.
+                a.getTriggerComp() == c &amp;&amp; a.getTriggerStatus() == stat) {
+                    // trigger that automation. chainedAutos now contains an ArrayList of Strings of all names of all chained automations
+                    chainedAutos = a.triggerAutomation(automations);
+                    for (//loop through chainedAutos
+                    String s : //loop through chainedAutos
+                    chainedAutos) {
+                        //add all names from chainedAutos to allChainedAutos (chainedAutos will be re-initialised in every loop, losing the names, allChainedAutos will contain all names added each loop and keep it until the end of the method)
+                        allChainedAutos.add(s);
+                    }
+                }
+            }
+        }
+    }
+    // after all automations have been triggered add all names of all triggered automations to a String.
+    for (String s : allChainedAutos) {
+        triggeredAutomations += s + &quot;\n&quot;;
+    }
+    // can be used by gui to give feedback to user
+    return triggeredAutomations;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_SCCvkAB3EeiUg4x9yHMHjA" name="HAManager" visibility="public" method="_SCFL0AB3EeiUg4x9yHMHjA"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_SCFy4AB3EeiUg4x9yHMHjA" name="getComponents" visibility="public" method="_SCHoEAB3EeiUg4x9yHMHjA">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCGZ8AB3EeiUg4x9yHMHjA" type="_R_aSUAB3EeiUg4x9yHMHjA" direction="return">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SCHBAAB3EeiUg4x9yHMHjA"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SCHBAQB3EeiUg4x9yHMHjA" value="*"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_SCIPIAB3EeiUg4x9yHMHjA" name="getAutomations" visibility="public" method="_SCI2MgB3EeiUg4x9yHMHjA">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCIPIQB3EeiUg4x9yHMHjA" type="_SCA6YAB3EeiUg4x9yHMHjA" direction="return">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SCI2MAB3EeiUg4x9yHMHjA"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SCI2MQB3EeiUg4x9yHMHjA" value="*"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_SCJdQAB3EeiUg4x9yHMHjA" name="createNewComponent" visibility="public" method="_SCKrYAB3EeiUg4x9yHMHjA">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCKEUAB3EeiUg4x9yHMHjA" name="name" type="_R_bgcQB3EeiUg4x9yHMHjA"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_SCLScAB3EeiUg4x9yHMHjA" name="removeComponent" visibility="public" method="_SCL5gAB3EeiUg4x9yHMHjA">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCLScQB3EeiUg4x9yHMHjA" name="name" type="_R_bgcQB3EeiUg4x9yHMHjA"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_SCNusAB3EeiUg4x9yHMHjA" name="createNewAutomation" visibility="public" method="_SCQK8QB3EeiUg4x9yHMHjA">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCNusQB3EeiUg4x9yHMHjA" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCOVwAB3EeiUg4x9yHMHjA" name="autoName" type="_R_bgcQB3EeiUg4x9yHMHjA"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCO80AB3EeiUg4x9yHMHjA" name="triggerCompName" type="_R_bgcQB3EeiUg4x9yHMHjA"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCO80QB3EeiUg4x9yHMHjA" name="triggerStatus">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCPj4AB3EeiUg4x9yHMHjA" name="responseCompName" type="_R_bgcQB3EeiUg4x9yHMHjA"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCQK8AB3EeiUg4x9yHMHjA" name="responseStatus">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_SCRZEAB3EeiUg4x9yHMHjA" name="removeAutomation" visibility="public" method="_SCSnMQB3EeiUg4x9yHMHjA">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCSnMAB3EeiUg4x9yHMHjA" name="name" type="_R_bgcQB3EeiUg4x9yHMHjA"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_SCT1UAB3EeiUg4x9yHMHjA" name="changeStatus" visibility="public" method="_SCVqgAB3EeiUg4x9yHMHjA">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCUcYAB3EeiUg4x9yHMHjA" type="_R_bgcQB3EeiUg4x9yHMHjA" direction="return"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCUcYQB3EeiUg4x9yHMHjA" name="name" type="_R_bgcQB3EeiUg4x9yHMHjA"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCVDcAB3EeiUg4x9yHMHjA" name="stat">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+            </ownedParameter>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_SCA6YAB3EeiUg4x9yHMHjA" name="Automation" visibility="public">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_SCYGwAB3EeiUg4x9yHMHjA" name="name" visibility="private" type="_R_bgcQB3EeiUg4x9yHMHjA" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_SCYt0AB3EeiUg4x9yHMHjA" name="defaultValue">
+              <language>JAVA</language>
+              <body>&quot;&quot;</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_SCYt0QB3EeiUg4x9yHMHjA" name="triggerComp" visibility="private" type="_R_aSUAB3EeiUg4x9yHMHjA" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_SCZU4AB3EeiUg4x9yHMHjA" name="triggerStatus" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_SCajAAB3EeiUg4x9yHMHjA" name="responseComp" visibility="private" type="_R_aSUAB3EeiUg4x9yHMHjA" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_SCbKEAB3EeiUg4x9yHMHjA" name="responseStatus" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+          </ownedAttribute>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SChQsQB3EeiUg4x9yHMHjA" name="Automation" specification="_SCcYMAB3EeiUg4x9yHMHjA">
+            <language>JAVA</language>
+            <body>
+    this.name = name;
+    this.triggerComp = triggerComp;
+    this.triggerStatus = triggerStatus;
+    this.responseComp = responseComp;
+    this.responseStatus = responseStatus;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SCie0QB3EeiUg4x9yHMHjA" name="getName" specification="_SCh3wAB3EeiUg4x9yHMHjA">
+            <language>JAVA</language>
+            <body>
+    return name;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SCjF4QB3EeiUg4x9yHMHjA" name="getTriggerComp" specification="_SCie0gB3EeiUg4x9yHMHjA">
+            <language>JAVA</language>
+            <body>
+    return triggerComp;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SCkUAAB3EeiUg4x9yHMHjA" name="getTriggerStatus" specification="_SCjs8AB3EeiUg4x9yHMHjA">
+            <language>JAVA</language>
+            <body>
+    return triggerStatus;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SCk7EgB3EeiUg4x9yHMHjA" name="getRespComp" specification="_SCk7EAB3EeiUg4x9yHMHjA">
+            <language>JAVA</language>
+            <body>
+    return responseComp;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SCmJMAB3EeiUg4x9yHMHjA" name="getRespStatus" specification="_SCliIAB3EeiUg4x9yHMHjA">
+            <language>JAVA</language>
+            <body>
+    return responseStatus;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SColcAB3EeiUg4x9yHMHjA" name="triggerAutomation" specification="_SCmwQAB3EeiUg4x9yHMHjA">
+            <language>JAVA</language>
+            <body>
+    ArrayList&lt;String> allChainedAutos = new ArrayList&lt;>();
+    if (responseStatus != responseComp.getStatus()) {
+        //only triggers if status changes
+        //change the status of responseComp
+        responseComp.changeStatus(responseStatus);
+        ArrayList&lt;String> chainedAutos = new ArrayList&lt;>();
+        // name of this automation is added to the ArrayList that will eventually be returned to the caller of this method
+        allChainedAutos.add(this.name);
+        // find and trigger automations that are triggered by the status change of responseComp:
+        for (Automation a : automations) {
+            //loop through all automations
+            if (a.getTriggerComp() == this.responseComp &amp;&amp; a.getTriggerStatus() == this.responseStatus) {
+                // if responseComp and status are in another automation as triggerComp and status
+                // trigger that automation. chainedAutos now contains an ArrayList of Strings of all names of all chained automations
+                chainedAutos = a.triggerAutomation(automations);
+                for (String s : chainedAutos) {
+                    //loop through chainedAutos
+                    //add all names from chainedAutos to allChainedAutos (chainedAutos will be re-initialised in every loop, losing the names. allChainedAutos will contain all names added each loop and keep it until the end of the method)
+                    allChainedAutos.add(s);
+                }
+            }
+        }
+    }
+    // automations triggered by this automation have returned all names of (by them) triggered automations. The first triggered automation (called on by a HAManager instance) now contains all names of all chained automations and returns it to the HAManager instance
+    return allChainedAutos;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_SCcYMAB3EeiUg4x9yHMHjA" name="Automation" visibility="public" method="_SChQsQB3EeiUg4x9yHMHjA">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCfbgAB3EeiUg4x9yHMHjA" name="name" type="_R_bgcQB3EeiUg4x9yHMHjA"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCgCkAB3EeiUg4x9yHMHjA" name="triggerComp" type="_R_aSUAB3EeiUg4x9yHMHjA"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCgCkQB3EeiUg4x9yHMHjA" name="triggerStatus">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCgpoAB3EeiUg4x9yHMHjA" name="responseComp" type="_R_aSUAB3EeiUg4x9yHMHjA"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SChQsAB3EeiUg4x9yHMHjA" name="responseStatus">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_SCh3wAB3EeiUg4x9yHMHjA" name="getName" visibility="public" method="_SCie0QB3EeiUg4x9yHMHjA">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCie0AB3EeiUg4x9yHMHjA" type="_R_bgcQB3EeiUg4x9yHMHjA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_SCie0gB3EeiUg4x9yHMHjA" name="getTriggerComp" visibility="public" method="_SCjF4QB3EeiUg4x9yHMHjA">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCjF4AB3EeiUg4x9yHMHjA" type="_R_aSUAB3EeiUg4x9yHMHjA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_SCjs8AB3EeiUg4x9yHMHjA" name="getTriggerStatus" visibility="public" method="_SCkUAAB3EeiUg4x9yHMHjA">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCjs8QB3EeiUg4x9yHMHjA" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_SCk7EAB3EeiUg4x9yHMHjA" name="getRespComp" visibility="public" method="_SCk7EgB3EeiUg4x9yHMHjA">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCk7EQB3EeiUg4x9yHMHjA" type="_R_aSUAB3EeiUg4x9yHMHjA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_SCliIAB3EeiUg4x9yHMHjA" name="getRespStatus" visibility="public" method="_SCmJMAB3EeiUg4x9yHMHjA">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCliIQB3EeiUg4x9yHMHjA" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_SCmwQAB3EeiUg4x9yHMHjA" name="triggerAutomation" visibility="public" method="_SColcAB3EeiUg4x9yHMHjA">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCmwQQB3EeiUg4x9yHMHjA" type="_R_bgcQB3EeiUg4x9yHMHjA" direction="return">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SCnXUAB3EeiUg4x9yHMHjA"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SCnXUQB3EeiUg4x9yHMHjA" value="*"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCn-YAB3EeiUg4x9yHMHjA" name="automations" type="_SCA6YAB3EeiUg4x9yHMHjA">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SCn-YQB3EeiUg4x9yHMHjA"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SCn-YgB3EeiUg4x9yHMHjA" value="*"/>
+            </ownedParameter>
+          </ownedOperation>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_R_a5YAB3EeiUg4x9yHMHjA" name="java">
+      <packagedElement xmi:type="uml:Package" xmi:id="_R_a5YQB3EeiUg4x9yHMHjA" name="java">
+        <packagedElement xmi:type="uml:Package" xmi:id="_R_bgcAB3EeiUg4x9yHMHjA" name="lang">
+          <packagedElement xmi:type="uml:Class" xmi:id="_R_bgcQB3EeiUg4x9yHMHjA" name="String"/>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_R_IlgAB3EeiUg4x9yHMHjA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_R_IlgQB3EeiUg4x9yHMHjA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://PapyrusJava_PROFILES/PapyrusJava.profile.uml#_j9REUByGEduN1bTiWJ0lyw"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_R_Wn8AB3EeiUg4x9yHMHjA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_R_XPAAB3EeiUg4x9yHMHjA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/Codegen/1#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://Codegen_PROFILES/Codegen.profile.uml#_fPDsIBa-EearhdjjJ6cVzQ"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_R_X2EAB3EeiUg4x9yHMHjA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_R_X2EQB3EeiUg4x9yHMHjA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Model>
+  <PapyrusJava:External xmi:id="_SBfV8AB3EeiUg4x9yHMHjA" name="java.lang.String" base_Classifier="_R_bgcQB3EeiUg4x9yHMHjA"/>
+  <standard:Create xmi:id="_SBy38AB3EeiUg4x9yHMHjA" base_BehavioralFeature="_SBwbsAB3EeiUg4x9yHMHjA"/>
+  <standard:Create xmi:id="_SCEkwAB3EeiUg4x9yHMHjA" base_BehavioralFeature="_SCCvkAB3EeiUg4x9yHMHjA"/>
+  <standard:Create xmi:id="_SCeNYAB3EeiUg4x9yHMHjA" base_BehavioralFeature="_SCcYMAB3EeiUg4x9yHMHjA"/>
+</xmi:XMI>
